@@ -43,9 +43,10 @@
                         type="text" 
                         id="username" 
                         name="username" 
-                        maxlength="30" 
+                        maxlength="35" 
                         autocomplete="off"
                         required>
+                    <img class="input-icon no-select" src="icons/static/sign-in-username.svg" alt="|">
                 </div>
                 <div class="form-elements">
                     <label class="no-select" for="username">Password</label>
@@ -53,17 +54,19 @@
                         type="password" 
                         id="password" 
                         name="password" 
-                        maxlength="30" 
+                        maxlength="35" 
                         autocomplete="off"
                         required>
+                    <img class="input-icon no-select" src="icons/static/sign-in-password.svg" alt="|">
                 </div>
-                <div id="button-container" class="form-elements">
+                <div id="button-container">
                     <input 
                         id="submit-button" 
                         type="submit" 
                         value="Login" 
                         class="box-shadow">
                 </div>
+                <p id="forgot-password" class="text-center text-no-wrap">Forgot Password?</p>
             </form>
         </section>
     </main>

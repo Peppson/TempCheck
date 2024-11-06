@@ -1,3 +1,4 @@
+
 form {
     margin-top: 60px;
 }
@@ -6,16 +7,26 @@ input {
     width: 100%;
     padding: 14px;
     font-size: 20px;
-    outline: none;
     border: 0;
+    outline: none;
+    background-color: transparent;
+    color: var(--white);
+}
+
+input[type=text],
+input[type=password] {
+    border-bottom: 2px solid var(--lightgrey);
+}
+
+input[type="text"]:focus,
+input[type="password"]:focus {
+    border-bottom: 2px solid var(--white);
 }
 
 input[type=submit] {
-    color: var(--white);
     font-size: 20px;
     cursor: pointer;
     transition: transform 0.2s ease;
-
     background-color: rgb(36, 88, 138); /* random color */
 }
 
@@ -56,19 +67,27 @@ label {
     border-radius: var(--border-radius);
     justify-content: center;
     backdrop-filter: blur(var(--blur-medium));
-
     background-color: rgba(0, 0, 0, 0.3);
 }
 
 .sign-up-text {
-    font-size: 26px;
+    font-size: 28px;
     color: var(--white);
     cursor: default;
 }
 
 .form-elements {
+    position: relative;
     height: 100px;
     margin: 20px 0;
+}
+
+.input-icon {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none;
 }
 
 .button-loading::after {
@@ -85,13 +104,19 @@ label {
     border-top-color: #ffffff;
     border-radius: 50%;
     animation: button-loading-spinner 1s ease infinite;
-  }
+}
 
 #button-container {
     position: relative;
-    margin-top: 20px;
     display: flex;
     align-items: center;
+    margin-top: 30px;
+    height: 84px;
+}
+
+#forgot-password {
+    color: var(--grey);
+    cursor: default;
 }
 
 @keyframes button-loading-spinner {

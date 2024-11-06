@@ -7,5 +7,5 @@ function userLoginAnimation(event) {
     // Wait while showing animation
     setTimeout(function() {
         document.getElementById("userLogin").submit();
-    }, 1800);
+    }, 2000);
 }
