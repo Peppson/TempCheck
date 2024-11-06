@@ -19,10 +19,12 @@
         <div class="logo-header">
             <h1>
                 TEMP<span>CHECK</span>
-              </h1>
+            </h1>
         </div>
         <div class="right-header">
-            <nav><h2>link1, link2</h2></nav>
+            <nav>
+                <h2>link1, link2</h2>
+            </nav>
         </div>
 
     </header>
@@ -31,7 +33,18 @@
 
         <section class="top-section">
             <div class="weather-container">
-                <h2>weather data</h2>
+                <div class="input-field">
+                    <input type="text" id="city-input" placeholder="Search for a city">
+                    <button id="weather-button" onclick="WeatherData()">Search</button>
+                </div>
+                <div class="inner-weather-info">
+
+                    <div id="display-info"></div>
+
+
+                </div>
+
+
             </div>
         </section>
 
