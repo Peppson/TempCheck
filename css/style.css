@@ -2,7 +2,8 @@
 :root {
     /* ----- Colors ----- */
     --white: #ffffff;
-    --lightgrey: #e5e4eb;
+    --lightgrey: #cecdd4;
+    --grey: #68686d;
     --darkgrey: rgb(59, 59, 59);
 
     /* ----- Sizes ----- */
