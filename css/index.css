@@ -1,0 +1,28 @@
+
+.top-section,
+.bottom-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.top-section {
+    background:
+    linear-gradient(0deg,  rgb(59, 59, 59),rgb(163, 163, 163) 15%);
+    background-size: cover;
+    background-position: center;
+}
+
+.bottom-section {
+    background-color: rgb(59, 59, 59);
+}
+
+.weather-container,
+.compare-weather-container {
+    max-width: 800px;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.486);
+    height: 500px;
+}
+
