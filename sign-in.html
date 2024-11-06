@@ -4,8 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title></title>
+    <title>Temp Check</title>
     <script src="./script/global.js" defer></script>
+    <script src="./script/sign-in.js" defer></script>
     <link rel="stylesheet" href="./css/style.css">
     <link rel="stylesheet" href="./css/sign-in.css">
 </head>
@@ -16,7 +17,8 @@
     
     <header>
         <div class="left-header">
-            <h2> Dark/light</h2>
+            <!-- Debug TODO-->
+            <a href="index.html" style="color: white; font-size: 32px;">Dark/light</a> 
         </div>
         <div class="logo-header">
             <h1>TEMP<span>CHECK</span></h1>
@@ -29,12 +31,46 @@
     </header>
 
     <main class="sign-in-page">
-
-
-    
-
+        <section class="sign-in-container">
+            <div class="sign-up-text">
+                <h1 class="text-center text-no-wrap no-select">Login</h1>
+            </div>
+            
+            <form id="userLogin" action="index.html" onsubmit="userLoginAnimation(event)"> 
+                <div class="form-elements">
+                    <label class="no-select" for="username">Username</label>
+                    <input 
+                        type="text" 
+                        id="username" 
+                        name="username" 
+                        maxlength="30" 
+                        autocomplete="off"
+                        required>
+                </div>
+                <div class="form-elements">
+                    <label class="no-select" for="username">Password</label>
+                    <input 
+                        type="password" 
+                        id="password" 
+                        name="password" 
+                        maxlength="30" 
+                        autocomplete="off"
+                        required>
+                </div>
+                <div id="button-container" class="form-elements">
+                    <input 
+                        id="submit-button" 
+                        type="submit" 
+                        value="Login" 
+                        class="box-shadow">
+                </div>
+            </form>
+        </section>
     </main>
-    <!-- <footer>
-    </footer> -->
+
+    <footer>
+        <h1>TEMP<span style="color: red;">CHECK</span></h1>
+    </footer>
+
 </body>
 </html>
