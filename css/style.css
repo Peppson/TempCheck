@@ -1,16 +1,32 @@
+
+:root {
+    /* ----- Colors ----- */
+    --white: #ffffff;
+    --lightgrey: #e5e4eb;
+    --darkgrey: #868686;
+
+    /* ----- Sizes ----- */
+    --border-radius: 0px;
+    --blur-medium: 3px;
+}
+
 * {
     margin: 0px;
     padding: 0px;
     box-sizing: border-box;
 }
 
+body, html {
+    height: 100%;
+}
+
 body {
-    font-family: Helvetica, Arial, sans-serif;
+    font-family: 'Roboto', Arial, sans-serif;
+    line-height: 1.6;
 }
 
 header,
 footer {
-
     background-color: rgb(59, 59, 59);
     padding: 20px;
     color: white;
@@ -40,8 +56,37 @@ header h2 {
     font-weight: 500;
 }
 
+.debug {
+    background-color: rgb(226, 121, 23);
+}
+
+.hidden {
+    display: none;
+}
+
+.box-shadow {
+    box-shadow: rgba(0, 0, 0, 0.24) 1px 1px 8px;
+}
+
+.text-bold {
+    font-weight: bold;
+}
+
+.text-no-wrap {
+    white-space: nowrap;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.blur-medium {
+    filter: blur(var(--blur-medium));
+    -webkit-filter: blur(var(--blur-medium));
+}
+
 @media all and (max-width: 700px) {
-    header{
+    header {
         padding:5px;
     }
 }
