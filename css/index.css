@@ -22,7 +22,7 @@
 .compare-weather-container {
     max-width: 800px;
     width: 100%;
-    background-color: rgba(0, 0, 0, 0.486);
+    background-color: rgba(0, 0, 0, 0.603);
     height: 500px;
 }
 
@@ -70,11 +70,12 @@
     color: rgb(116, 116, 116);
 }
 #display-info{
+    line-height: 1;
     color:white;
     font-size: 30px;
     display: flex;
     flex-direction: row;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
     width: 100%;
 }
@@ -88,7 +89,6 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    width:100%;
 }
 .temp-info{
     font-size: 150px;
