@@ -9,7 +9,7 @@
 .top-section {
     background-image:
     linear-gradient(0deg, rgb(59, 59, 59), transparent 25%),
-    url('../images/machu.jpg');
+    url('../images/background/background-light.jpg');
     background-size: cover;
     background-position: center;
 }

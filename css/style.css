@@ -3,7 +3,7 @@
     /* ----- Colors ----- */
     --white: #ffffff;
     --lightgrey: #e5e4eb;
-    --darkgrey: #868686;
+    --darkgrey: rgb(59, 59, 59);
 
     /* ----- Sizes ----- */
     --border-radius: 0px;
@@ -27,7 +27,7 @@ body {
 
 header,
 footer {
-    background-color: rgb(59, 59, 59);
+    background-color: var(--darkgrey);
     padding: 20px;
     color: white;
     display: flex;
@@ -83,6 +83,10 @@ header h2 {
 .blur-medium {
     filter: blur(var(--blur-medium));
     -webkit-filter: blur(var(--blur-medium));
+}
+
+.no-select {
+    user-select: none;
 }
 
 @media all and (max-width: 700px) {
