@@ -15,25 +15,26 @@
 
 .top-section {
     background-image:
-    linear-gradient(0deg, rgb(59, 59, 59), transparent 25%),
-    url('../images/background/background-beach.jpg');
+        linear-gradient(0deg, var(--darkgrey), transparent 25%),
+        url('../images/background/background-beach.jpg');
     background-size: cover;
     background-position: center;
 }
 
 .bottom-section {
-    background-color: rgb(59, 59, 59);
+    background-color: var(--darkgrey);
 }
 
 .weather-container,
 .compare-weather-container {
     max-width: 800px;
     width: 100%;
-    background-color: rgba(0, 0, 0, 0.603);
+    background-color: rgba(0, 0, 0, 0.25);
     min-height: 500px;
 }
 
 .weather-container {
+    backdrop-filter: blur(var(--blur-medium));
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
@@ -44,46 +45,51 @@
 }
 
 .input-field {
-
+    padding-bottom:10px;
     display: flex;
     flex-wrap: wrap;
-    padding: 10px;
     width: 100%;
 }
 
 #city-input {
-    border-top-left-radius: 10px;
-    border-bottom-left-radius: 10px;
+
     flex-grow: 2;
     padding: 5px;
     padding-left: 20px;
+    border: 0;
     outline: none;
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: transparent;
+}
+
+#city-input::placeholder {
+    color: var(--lightgrey);
 }
 
 #weather-button {
-    background-color:  rgba(0, 0, 0, 0.5);
+    background-color: rgba(0, 0, 0, 0);
     flex-grow: 1;
     padding: 5px;
-    border-top-right-radius: 10px;
-    border-bottom-right-radius: 10px;
+    border: none;
 }
 
 #city-input,
 #weather-button {
+    border-bottom: 2px solid var(--white);
     font-size: 30px;
-    border: none;
-    color: white;
+    color: var(--lightgrey);
+    padding-top: 20px;
+    padding-bottom: 20px;
 }
 
 #weather-button:hover {
     cursor: pointer;
-    color: rgba(192, 192, 192, 0.623);
-    background-color: rgba(61, 61, 61, 0.425);
+    color: var(--white);
+    background-color: var(--darkgrey);
 }
-#display-info{
+
+#display-info {
     line-height: 1;
-    color:white;
+    color: white;
     font-size: 30px;
     display: flex;
     flex-wrap: wrap;
@@ -91,25 +97,38 @@
     justify-content: space-between;
     width: 100%;
 }
-.title{
+
+.title {
     font-size: 34px;
-    color:rgb(182, 182, 182);
+    color: var(--lightgrey);
 }
-.icon-info{
+
+.icon-info {
     display: flex;
     flex-direction: column;
     align-items: center;
     margin-bottom: 20px;
 }
-.temp-info{
+
+.temp-info {
     font-size: 200px;
 }
-.information-box{
+
+.information-box {
     padding-right: 20px;
+    gap:20px;
     display: flex;
     flex-direction: column;
     align-items: center;
 }
+
+hr{
+    height: 2px;
+    border: none; 
+    background-color: var(--white);
+}
+
+/* Bottom div */
 .vs-container{
     display: flex;
     flex-direction: row;

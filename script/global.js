@@ -14,7 +14,6 @@ function WeatherData() {
     fetch(`https://api.openweathermap.org/data/2.5/weather?q=${cityInput}&appid=5d701d369d46aa133c404b3d2ec1d506&units=metric`)
         .then((response) => response.json())
         .then(displayWeatherData)
-
         .catch((error) => {
             document.getElementById("display-info").innerText = "Enter a real city, dummy";
             console.error("Error:", error);
@@ -22,23 +21,19 @@ function WeatherData() {
 }
 
 function getWeatherAtPosition() {
-  
-        navigator.geolocation.getCurrentPosition(
-            (position) => {
-                const { latitude, longitude } = position.coords;
-                fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=5d701d369d46aa133c404b3d2ec1d506&units=metric`)
-                    .then((response) => response.json())
-                    .then(displayWeatherData)
-                    .catch((error) => {
-                        document.getElementById("display-info").innerText = "Could not retrieve weather data for your location.";
-                        console.error("Error:", error);
-                    });
-            },
-            (error) => {
-                document.getElementById("display-info").innerText = "Geolocation access denied.";
-                console.error("Geolocation Error:", error);
-            }
-        );
+
+    navigator.geolocation.getCurrentPosition(
+        (position) => {
+            const { latitude, longitude } = position.coords;
+            fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=5d701d369d46aa133c404b3d2ec1d506&units=metric`)
+                .then((response) => response.json())
+                .then(displayWeatherData)
+                .catch((error) => {
+                    document.getElementById("display-info").innerText = "Could not retrieve weather data for your location.";
+                    console.error("Error:", error);
+                });
+        }
+    );
 }
 
 getWeatherAtPosition(); // DEN BA KÖR
@@ -121,15 +116,18 @@ function getSVGIcon(iconCode) {
     }
     return iconPath;
 }
+
+/* BOTTOM SECTION */
+
 function toggleDropdown(dropdownContentSelector) {
     const dropdownContent = document.querySelector(dropdownContentSelector);
     dropdownContent.style.display = dropdownContent.style.display === 'block' ? 'none' : 'block';
 
     // Close dropdown
-    window.onclick = function(event) {
+    window.onclick = function (event) {
         if (!event.target.matches('.dropdown-btn')) {
             const dropdowns = document.querySelectorAll('.swe, .rwa');
-            dropdowns.forEach(function(dropdown) {
+            dropdowns.forEach(function (dropdown) {
                 if (dropdown.style.display === 'block') {
                     dropdown.style.display = 'none';
                 }
@@ -138,11 +136,11 @@ function toggleDropdown(dropdownContentSelector) {
     };
 }
 
-function weatherApi(city, win){
+function weatherApi(city, win) {
     let cityInput = city
     fetch(`https://api.openweathermap.org/data/2.5/weather?q=${cityInput}&appid=5d701d369d46aa133c404b3d2ec1d506&units=metric`)
         .then((response) => response.json())
-        .then((data) => {displayVs(data, win)})
+        .then((data) => { displayVs(data, win) })
 
         .catch((error) => {
             document.getElementById("display-info").innerText = "Enter a real city, dummy";

@@ -35,50 +35,53 @@
 
     <main class="main-page">
 
-        <section class="top-section">
+        <div class="top-section">
+
             <div class="weather-container">
                 <div class="input-field">
-                    <input type="text" id="city-input" placeholder="Search for a city">
+                    <input type="text" id="city-input" placeholder="Enter a city...">
                     <button id="weather-button" onclick="WeatherData()">Search</button>
                 </div>
                 <div id="display-info">Information will be displayed here</div>
-                <hr style="width:100%">
+                <hr>
             </div>
 
-        </section>
+        </div>
 
-        <section class="bottom-section">
+        <div class="bottom-section">
             <div class="compare-weather-container">
                 <div class="vs-container">
                     <div class="win-one">test</div>
                     <div class="vs"></div>
                     <div class="win-two"></div>
                 </div>
-            </div>    
-        </div>
-        <div class="city-container">
-            <div class="dropdown">
-                <button class="dropdown-btn" onclick="toggleDropdown('.dropdown:nth-child(1) .swe')">Select Swedish City</button>
-                <div class="swe">
-                    <div onclick="weatherApi('Malmo', 'one')">Malmö</div>
-                    <div onclick="weatherApi('Norrkoping', 'one')">Norrköping</div>
-                    <div onclick="weatherApi('Stockholm', 'one')">Stockholm</div>
-                    <div onclick="weatherApi('kiruna', 'one')">Kirunna</div>
+            </div>
+
+            <div class="city-container">
+                <div class="dropdown">
+                    <button class="dropdown-btn" onclick="toggleDropdown('.dropdown:nth-child(1) .swe')">Select Swedish
+                        City</button>
+                    <div class="swe">
+                        <div onclick="weatherApi('Malmo', 'one')">Malmö</div>
+                        <div onclick="weatherApi('Norrkoping', 'one')">Norrköping</div>
+                        <div onclick="weatherApi('Stockholm', 'one')">Stockholm</div>
+                        <div onclick="weatherApi('kiruna', 'one')">Kirunna</div>
+                    </div>
+                </div>
+                <div class="dropdown">
+                    <button class="dropdown-btn" onclick="toggleDropdown('.dropdown:nth-child(2) .rwa')">Select Rwandan
+                        City</button>
+                    <div class="rwa">
+                        <div onclick="weatherApi('Kigali', 'two')">Kigali</div>
+                        <div onclick="weatherApi('Gisenyi', 'two')">Gisenyi</div>
+                        <div onclick="weatherApi('Butare', 'two')">Butare</div>
+                        <div onclick="weatherApi('Gitarama', 'two')">Gitarama</div>
+                    </div>
                 </div>
             </div>
-            <div class="dropdown">
-                <button class="dropdown-btn" onclick="toggleDropdown('.dropdown:nth-child(2) .rwa')">Select Rwandan City</button>
-                <div class="rwa">
-                    <div onclick="weatherApi('Kigali', 'two')">Kigali</div>
-                    <div onclick="weatherApi('Gisenyi', 'two')">Gisenyi</div>
-                    <div onclick="weatherApi('Butare', 'two')">Butare</div>
-                    <div onclick="weatherApi('Gitarama', 'two')">Gitarama</div>
-                </div>
-            </div>
+
+
         </div>
-        
-        
-        </section>
 
         <footer>
             <h1>TEMP<span style="color: red;">CHECK</span></h1>
