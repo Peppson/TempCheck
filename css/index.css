@@ -9,7 +9,7 @@
 .top-section {
     background-image:
     linear-gradient(0deg, rgb(59, 59, 59), transparent 25%),
-    url('../images/background/background-light.jpg');
+    url('../images/background/background-beach.jpg');
     background-size: cover;
     background-position: center;
 }
@@ -23,14 +23,13 @@
     max-width: 800px;
     width: 100%;
     background-color: rgba(0, 0, 0, 0.603);
-    height: 500px;
+    min-height: 500px;
 }
 
 .weather-container {
     display: flex;
     flex-direction: column;
-    justify-content: start;
-    gap: 20px;
+    flex-wrap: wrap;
 }
 
 .weather-container h2 {
@@ -38,24 +37,29 @@
 }
 
 .input-field {
-    background-color: rgba(56, 56, 56, 0.651);
+
     display: flex;
+    flex-wrap: wrap;
     padding: 10px;
-    gap: 10px;
     width: 100%;
 }
 
 #city-input {
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
     flex-grow: 2;
     padding: 5px;
+    padding-left: 20px;
     outline: none;
-    background-color: rgba(151, 151, 151, 0.397);
+    background-color: rgba(0, 0, 0, 0.5);
 }
 
 #weather-button {
-    background-color: rgba(151, 151, 151, 0.397);
+    background-color:  rgba(0, 0, 0, 0.5);
     flex-grow: 1;
     padding: 5px;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
 }
 
 #city-input,
@@ -67,16 +71,17 @@
 
 #weather-button:hover {
     cursor: pointer;
-    color: rgb(116, 116, 116);
+    color: rgba(192, 192, 192, 0.623);
+    background-color: rgba(61, 61, 61, 0.425);
 }
 #display-info{
     line-height: 1;
     color:white;
     font-size: 30px;
     display: flex;
+    flex-wrap: wrap;
     flex-direction: row;
     justify-content: space-between;
-    align-items: center;
     width: 100%;
 }
 .title{
@@ -84,14 +89,17 @@
     color:rgb(182, 182, 182);
 }
 .icon-info{
-    padding-left: 20px;
-    font-size: 40px;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
 }
 .temp-info{
-    font-size: 150px;
+    font-size: 200px;
+}
+.information-box{
     padding-right: 20px;
-    align-self: flex-start;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
