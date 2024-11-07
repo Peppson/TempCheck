@@ -1,4 +1,8 @@
 
+// Dark/Light mode toggle switch
+const toggleSwitch = document.getElementById('toggleSwitch');
+
+
 function WeatherData() {
     const cityInput = document.getElementById('city-input').value;
 
@@ -155,9 +159,31 @@ function displayVs(weatherData, win) {
     const iconPath = getSVGIcon(iconCode);
 
     infoText.innerHTML = `
-    <div class="vs-info">
+    <div class="vs-info">userLoginAnimation
         <div class=city-info>${weatherData.name}, ${weatherData.sys.country}</div>
         <img class="icon-img" src="${iconPath}">
     </div>
     <div class="vs-temp-info">${temp}°C</div>`;
 }
+
+function onUserLogin(event) {
+    event.preventDefault();
+    document.getElementById("button-container").classList.toggle("button-loading");
+    document.getElementById("submit-button").value = "";
+    
+    // Wait while showing animation
+    setTimeout(function() {
+        document.getElementById("userLogin").submit();
+    }, 2000);
+
+    // Call Api fetch here?
+}
+
+
+toggleSwitch.addEventListener('change', () => {
+    if (toggleSwitch.checked) {
+        console.log('Light mode!');
+    } else {
+        console.log('Dark mode!');
+    }
+});
