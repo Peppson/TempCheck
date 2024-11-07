@@ -90,3 +90,48 @@ function getSVGIcon(iconCode) {
     }
     return iconPath;
 }
+
+function toggleDropdown(dropdownContentSelector) {
+    const dropdownContent = document.querySelector(dropdownContentSelector);
+    dropdownContent.style.display = dropdownContent.style.display === 'block' ? 'none' : 'block';
+
+    // Close dropdown
+    window.onclick = function(event) {
+        if (!event.target.matches('.dropdown-btn')) {
+            const dropdowns = document.querySelectorAll('.swe, .rwa');
+            dropdowns.forEach(function(dropdown) {
+                if (dropdown.style.display === 'block') {
+                    dropdown.style.display = 'none';
+                }
+            });
+        }
+    };
+}
+
+function weatherApi(city, win){
+    let cityInput = city
+    fetch(`https://api.openweathermap.org/data/2.5/weather?q=${cityInput}&appid=5d701d369d46aa133c404b3d2ec1d506&units=metric`)
+        .then((response) => response.json())
+        .then((data) => {displayVs(data, win)})
+
+        .catch((error) => {
+            document.getElementById("display-info").innerText = "Enter a real city, dummy";
+            console.error("Error:", error);
+        });
+    console.log(city)
+}
+
+function displayVs(weatherData, win) {
+    const infoTextCollection = document.getElementsByClassName(`win-${win}`);
+    const infoText = infoTextCollection[0];
+    const iconCode = weatherData.weather[0].icon;
+    const temp = Math.round(weatherData.main.temp);
+    const iconPath = getSVGIcon(iconCode);
+
+    infoText.innerHTML = `
+    <div class="vs-info">
+        <div class=city-info>${weatherData.name}, ${weatherData.sys.country}</div>
+        <img class="icon-img" src="${iconPath}">
+    </div>
+    <div class="vs-temp-info">${temp}°C</div>`;
+}
