@@ -17,71 +17,98 @@ function WeatherData() {
         });
 }
 
+function getWeatherAtPosition() {
+  
+        navigator.geolocation.getCurrentPosition(
+            (position) => {
+                const { latitude, longitude } = position.coords;
+                fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=5d701d369d46aa133c404b3d2ec1d506&units=metric`)
+                    .then((response) => response.json())
+                    .then(displayWeatherData)
+                    .catch((error) => {
+                        document.getElementById("display-info").innerText = "Could not retrieve weather data for your location.";
+                        console.error("Error:", error);
+                    });
+            },
+            (error) => {
+                document.getElementById("display-info").innerText = "Geolocation access denied.";
+                console.error("Geolocation Error:", error);
+            }
+        );
+}
+
+getWeatherAtPosition(); // DEN BA KÖR
+
 function displayWeatherData(weatherData) {
     const infoText = document.getElementById("display-info");
     const iconCode = weatherData.weather[0].icon;
     const temp = Math.round(weatherData.main.temp);
     const iconPath = getSVGIcon(iconCode);
+    const today = new Date().toLocaleDateString('en-US', { weekday: 'long' });
 
     infoText.innerHTML = `
     <div class="icon-info">
-        <div>${weatherData.name}, ${weatherData.sys.country}</div>
-        <img src="${iconPath}" width="250px" height="250px">
+    <div> ${today}</div>
+    <img class="svg-animated" src="${iconPath}" width="250px" height="250px">
+    <div> ${weatherData.weather[0].description}</div>
     </div>
-    <div class="temp-info">${temp}°C</div>`;
+    <div class="information-box">
+    <div>${weatherData.name}, ${weatherData.sys.country}</div>
+    <div class="temp-info">${temp}°</div>
+    </div>`;
 }
 
 function getSVGIcon(iconCode) {
     let iconPath;
     switch (iconCode) {
-        case '01d': 
+        case '01d':
             iconPath = 'icons/animated/day.svg';
             break;
-        case '01n': 
+        case '01n':
             iconPath = 'icons/animated/night.svg';
             break;
-        case '02d': 
+        case '02d':
             iconPath = 'icons/animated/cloudy-day-1.svg';
             break;
-        case '02n': 
+        case '02n':
             iconPath = 'icons/animated/cloudy-night-1.svg';
             break;
-        case '03d': 
+        case '03d':
             iconPath = 'icons/animated/cloudy-day-2.svg';
             break;
-        case '03n': 
+        case '03n':
             iconPath = 'icons/animated/cloudy-night-2.svg';
             break;
         case '04d':
             iconPath = 'icons/animated/cloudy-day-3.svg';
             break;
-        case '04n': 
+        case '04n':
             iconPath = 'icons/animated/cloudy-night-3.svg';
             break;
-        case '09d': 
+        case '09d':
             iconPath = 'icons/animated/rainy-1.svg';
             break;
-        case '09n': 
+        case '09n':
             iconPath = 'icons/animated/rainy-4.svg';
             break;
-        case '10d': 
+        case '10d':
             iconPath = 'icons/animated/rainy-2.svg';
             break;
-        case '10n': 
+        case '10n':
             iconPath = 'icons/animated/rainy-5.svg';
             break;
-        case '11d': 
+        case '11d':
         case '11n':
             iconPath = 'icons/animated/thunder.svg';
             break;
-        case '13d': 
+        case '13d':
             iconPath = 'icons/animated/snowy-1.svg';
             break;
         case '13n':
             iconPath = 'icons/animated/snowy-5.svg';
             break;
-        case '50d': 
-        case '50n': 
+        case '50d':
+        case '50n':
             iconPath = 'icons/animated/cloudy.svg';
             break;
         default:
@@ -90,7 +117,6 @@ function getSVGIcon(iconCode) {
     }
     return iconPath;
 }
-
 function toggleDropdown(dropdownContentSelector) {
     const dropdownContent = document.querySelector(dropdownContentSelector);
     dropdownContent.style.display = dropdownContent.style.display === 'block' ? 'none' : 'block';
