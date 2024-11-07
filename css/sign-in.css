@@ -1,6 +1,3 @@
-body {
-    max-height: 900px;
-}
 
 form {
     margin-top: 60px;
@@ -94,8 +91,8 @@ main label {
 .button-loading::after {
     content: "";
     position: absolute;
-    width: 22px;
-    height: 22px;
+    width: 24px;
+    height: 24px;
     top: 0;
     left: 0;
     right: 0;
