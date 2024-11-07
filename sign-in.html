@@ -4,76 +4,90 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Temp Check</title>
+    <title>TempCheck</title>
     <script src="./script/global.js" defer></script>
-    <script src="./script/sign-in.js" defer></script>
+    <link rel="icon" href="./icons/static/cloudy-day-1.svg">
     <link rel="stylesheet" href="./css/style.css">
     <link rel="stylesheet" href="./css/sign-in.css">
+    <link rel="stylesheet" href="./css/toggle-button.css">
+    <link rel="stylesheet" href="./css/header-footer.css">
 </head>
 
 <body>
-    <!-- Background image -->
     <div class="bg-image"></div>
-    
-    <header>
-        <div class="left-header">
-            <!-- Debug TODO-->
-            <a href="index.html" style="color: white; font-size: 32px;">Dark/light</a> 
+
+    <header id="header">
+        <!-- Logo -->
+        <div id="header-left" class="align-center">
+            <img src="icons/animated/cloudy-day-1.svg" alt="Logo">
+            <h1 class="text-no-wrap text-">Temp<span>Check</span></h1>
         </div>
-        <div class="logo-header">
-            <h1>TEMP<span>CHECK</span></h1>
-        </div>
-        <div class="right-header">
-            <nav>
-                <h2>link1, link2</h2>
-            </nav>
+
+        <!-- Theme button -->
+        <div id="header-left-sign-in">
+            <div class="switch-container align-center">
+                <p>Theme</p>
+                <label class="switch">
+                    <input type="checkbox" id="toggleSwitch">
+                    <span class="slider round"></span>
+                </label>
+            </div>
         </div>
     </header>
 
     <main class="sign-in-page">
-        <section class="sign-in-container">
+        <section class="sign-in-container transparent-blurred box-shadow ">
             <div class="sign-up-text">
-                <h1 class="text-center text-no-wrap no-select">Login</h1>
+                <h1 class="text-center text-no-wrap no-select">Sign in</h1>
             </div>
-            
-            <form id="userLogin" action="index.html" onsubmit="userLoginAnimation(event)"> 
+            <form id="userLogin" action="index.html" onsubmit="onUserLogin(event)">
                 <div class="form-elements">
-                    <label class="no-select" for="username">Username</label>
-                    <input 
-                        type="text" 
-                        id="username" 
-                        name="username" 
-                        maxlength="35" 
-                        autocomplete="off"
-                        required>
+                    <label class="no-select" for="username">Name</label>
+                    <input type="text" id="username" name="username" maxlength="35" autocomplete="off" required>
                     <img class="input-icon no-select" src="icons/static/sign-in-username.svg" alt="|">
                 </div>
                 <div class="form-elements">
                     <label class="no-select" for="username">Password</label>
-                    <input 
-                        type="password" 
-                        id="password" 
-                        name="password" 
-                        maxlength="35" 
-                        autocomplete="off"
+                    <input type="password" id="password" name="password" maxlength="35" autocomplete="123456789"
                         required>
                     <img class="input-icon no-select" src="icons/static/sign-in-password.svg" alt="|">
                 </div>
                 <div id="button-container">
-                    <input 
-                        id="submit-button" 
-                        type="submit" 
-                        value="Login" 
-                        class="box-shadow">
+                    <input id="submit-button" type="submit" value="Sign in" class="box-shadow">
                 </div>
                 <p id="forgot-password" class="text-center text-no-wrap">Forgot Password?</p>
             </form>
         </section>
     </main>
 
-    <footer>
-        <h1>TEMP<span style="color: red;">CHECK</span></h1>
+    <footer class="transparent-blurred box-shadow">
+        <div id="footer" class="footer-align">
+            <ul>
+                <li><img class="footer-icons" src="./icons/static/footer_github.svg" alt="Github"></li>
+                <li><img class="footer-icons" src="./icons/static/footer_instagram.svg" alt="Instagram"></li>
+                <li><img class="footer-icons" src="./icons/static/footer_facebook.svg" alt="Facebook"></li>
+                <li><img class="footer-icons" src="./icons/static/footer_linkedin.svg" alt="LinkedIn"></li>
+            </ul>
+            <p class="text-center">© Temp<span>Check</span></p>
+        </div>
     </footer>
 
 </body>
 </html>
+
+
+
+<!-- ---- Old header ---- -->
+<!-- <header>
+    <div class="left-header">
+        <a href="index.html" style="color: white; font-size: 32px;">Dark/light</a> 
+    </div>
+    <div class="logo-header">
+        <h1>TEMP<span>CHECK</span></h1>
+    </div>
+    <div class="right-header">
+        <nav>
+            <h2>link1, link2</h2>
+        </nav>
+    </div>
+</header> -->

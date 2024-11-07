@@ -1,3 +1,6 @@
+body {
+    max-height: 900px;
+}
 
 form {
     margin-top: 60px;
@@ -27,14 +30,14 @@ input[type=submit] {
     font-size: 20px;
     cursor: pointer;
     transition: transform 0.2s ease;
-    background-color: rgb(36, 88, 138); /* random color */
+    background-color: var(--accent-color);
 }
 
 input[type=submit]:hover {
-    transform: scale(1.02);
+    transform: scale(1.03);
 }
 
-label {
+main label {
     color: var(--lightgrey);
 }
 
@@ -42,8 +45,8 @@ label {
     position: fixed;
     top: 0;
     left: 0;
-    width: 100vw;
-    height: 100vh;
+    width: 100%;
+    height: 100%;
     background-image: url("../images/background/background-dark.jpg");
     background-position: center;
     background-repeat: no-repeat;
@@ -59,20 +62,18 @@ label {
 }
 
 .sign-in-container {
-    margin-top: 140px;
+    margin-top: 90px;
     max-width: 540px;
     width: 100%;
     height: 600px;
     padding: 40px 50px 40px 50px;
-    border-radius: var(--border-radius);
     justify-content: center;
-    backdrop-filter: blur(var(--blur-medium));
-    background-color: rgba(0, 0, 0, 0.3);
 }
 
 .sign-up-text {
     font-size: 28px;
     color: var(--white);
+    margin-bottom: -10px;
     cursor: default;
 }
 
@@ -119,6 +120,13 @@ label {
     cursor: default;
 }
 
+#header-left-sign-in {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
 @keyframes button-loading-spinner {
     from {
         transform: rotate(0turn);
@@ -130,7 +138,7 @@ label {
 
 @media all and (max-width: 540px) {
     .sign-in-container {
-        padding-right: 12px;
-        padding-left: 12px;
+        padding-right: 14px;
+        padding-left: 14px;
     }
 }
