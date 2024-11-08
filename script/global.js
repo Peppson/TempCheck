@@ -42,6 +42,8 @@ function getWeatherAtPosition() {
     );
 }
 
+getWeatherAtPosition(); // DEN BA KÖR
+
 function displayWeatherData(weatherData) {
     const infoText = document.getElementById("display-info");
     const iconCode = weatherData.weather[0].icon;
