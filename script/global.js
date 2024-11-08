@@ -149,18 +149,39 @@ function weatherApi(city, win) {
 }
 
 function displayVs(weatherData, win) {
-    const infoTextCollection = document.getElementsByClassName(`win-${win}`);
-    const infoText = infoTextCollection[0];
+    const infoTextCollection = document.getElementsByClassName(`win-${win}`)[0];
+    const compareWindow = document.getElementsByClassName(`comp-info-${win}`)[0];
     const iconCode = weatherData.weather[0].icon;
     const temp = Math.round(weatherData.main.temp);
+    const feelsComp = Math.round(weatherData.main.feels_like);
+    const minComp = Math.round(weatherData.main.temp_min);
+    const maxComp = Math.round(weatherData.main.temp_max);
+    const humiComp = Math.round(weatherData.main.humidity);
+    const windComp = Math.round(weatherData.wind.speed);
     const iconPath = getSVGIcon(iconCode);
 
-    infoText.innerHTML = `
-    <div class="vs-info">userLoginAnimation
+    infoTextCollection.classList.add(`move-${win}`);  
+    setTimeout(function() {
+        infoTextCollection.innerHTML = `
+        <div class="vs-info">userLoginAnimation
         <div class=city-info>${weatherData.name}, ${weatherData.sys.country}</div>
         <img class="icon-img" src="${iconPath}">
-    </div>
-    <div class="vs-temp-info">${temp}°C</div>`;
+        </div>
+        <div class="vs-temp-info">${temp}°C</div>`;
+    }, 1000);
+    infoTextCollection.addEventListener('animationend', function handleAnimationEnd() { 
+        infoTextCollection.classList.remove(`move-${win}`);
+        
+        compareWindow.innerHTML = `
+        <div class="temp-comp">${temp}</div>
+        <div class="feels-comp">${feelsComp}</div>
+        <div class="min-comp">${minComp}</div>
+        <div class="max-comp">${maxComp}</div>
+        <div class="humidity-comp">${humiComp}</div>
+        <div class="wind-comp">${windComp}</div>
+        `
+        
+    })
 }
 
 function toggleThemeIcon() {
