@@ -1,5 +1,5 @@
 
-// Dark/Light mode toggle switch
+// Dark/Light mode toggle switch(s) 
 const toggleSwitches = document.querySelectorAll(".theme-toggle-button");
 
 
@@ -184,11 +184,11 @@ function displayVs(weatherData, win) {
     })
 }
 
-// Params "light" || "dark"
+// Set theme icons. Params "light" || "dark"
 function setThemeIcon(theme) {
     const icons = document.querySelectorAll(".theme-icon");
 
-    // Change theme icon
+    // Change theme icon(s)
     setTimeout(function() {
         for (const icon of icons) {
             if (theme === "light") {
@@ -217,7 +217,7 @@ function closeDropdownMenu() {
 }
 
 
-// Dark/light theme buttons (mobile and desktop header)
+// On Theme-button press
 toggleSwitches.forEach((toggleSwitch) => {
     toggleSwitch.addEventListener("change", () => {
         const isLightMode = toggleSwitch.checked;

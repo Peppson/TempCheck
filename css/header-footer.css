@@ -75,6 +75,14 @@ footer p {
     margin: -13px;
 }
 
+.header-icon-2 {
+    padding-right: 4px;
+}
+
+.header-icon-3 {
+    padding-right: 8px;
+}
+
 .footer-icons {
     width: 30px;
 }
@@ -135,14 +143,6 @@ footer p {
     align-items: center;
 }
 
-.header-icon-2 {
-    padding-right: 4px;
-}
-
-.header-icon-3 {
-    padding-right: 8px;
-}
-
 #header-desktop {
     display: flex;
 }
@@ -184,15 +184,12 @@ footer p {
     }
 
     .header-icon-3 {
-        margin-left: -6px;
-        
+        margin-left: -6px;   
     }
-
+    
     .switch-container {
         padding-right: 20px;
     }
-    
-
 }
 
 /* Remove logo text */

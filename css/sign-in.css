@@ -38,7 +38,7 @@ main label {
     justify-content: center;
     height: 100%;
     padding: 20px;
-    margin-bottom: 90px;
+    
 }
 
 .sign-in-container {
@@ -48,7 +48,6 @@ main label {
     height: 600px;
     padding: 40px 50px 40px 50px;
     justify-content: center;
-    margin-bottom: 90px;
 }
 
 .sign-up-text {
