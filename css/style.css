@@ -8,11 +8,14 @@
     --accent-color: rgb(36, 88, 138);
     --accent-color-light: rgb(56, 139, 218); 
     --toggle-btn-dark: #47474b;
-    --toggle-btn-light: #ffa500;/* var(--accent-color-light); */
+    --toggle-btn-light: #ffa500;
 
     /* ----- Sizes ----- */
     --border-radius: 0px;
     --blur-medium: 3px;
+
+    /* ----- Image ----- */
+    --background-image: url("../images/background/background-dark.jpg");
 }
 
 * {
@@ -28,6 +31,24 @@ body, html {
 body {
     font-family: 'Roboto', Arial, sans-serif;
     line-height: 1.6;
+}
+
+a,
+a:visited {
+    text-decoration: none;
+}
+
+.bg-image {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: var(--background-image);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    z-index: -1;
 }
 
 .debug {
@@ -76,41 +97,3 @@ body {
     text-decoration-color: black !important;
     text-underline-offset: 6px;
 }
-
-
-
-
-
-
-
-/* ---- Old header/footer ---- */
-/* header,
-footer {
-    background-color: var(--darkgrey);
-    padding: 20px;
-    color: white;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    align-items: center;
-}
-
-header {
-    gap: 20px;
-}
-
-header h1 {
-    font-size: 60px;
-    font-weight: 600;
-    display: flex;
-    flex-wrap: wrap;
-}
-
-h1 span {
-    color: red;
-}
-
-header h2 {
-    font-size: 50px;
-    font-weight: 500;
-} */

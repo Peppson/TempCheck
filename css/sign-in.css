@@ -15,13 +15,13 @@ input {
 
 input[type=text],
 input[type=password] {
-    border-bottom: 2px solid var(--lightgrey);
-}
-
-input[type="text"]:focus,
-input[type="password"]:focus {
     border-bottom: 2px solid var(--white);
 }
+
+/* input[type="text"]:focus,
+input[type="password"]:focus {
+    border-bottom: 2px solid var(--accent-color-light);
+} */
 
 input[type=submit] {
     font-size: 20px;
@@ -35,25 +35,7 @@ input[type=submit]:hover {
 }
 
 main label {
-    color: var(--lightgrey);
-}
-
-a,
-a:visited {
-    text-decoration: none;
-}
-
-.bg-image {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-image: url("../images/background/background-dark.jpg");
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    z-index: -1;
+    color: var(--white);
 }
 
 .sign-in-page {
@@ -120,10 +102,12 @@ a:visited {
 }
 
 #forgot-password {
-    color: var(--grey);
+    padding-top: 10px;
+    color: var(--lightgrey);
     cursor: default;
 }
 
+/* Sign in animation */
 @keyframes button-loading-spinner {
     from {
         transform: rotate(0turn);

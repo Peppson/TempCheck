@@ -184,19 +184,6 @@ function displayVs(weatherData, win) {
     })
 }
 
-function onUserLogin(event) {
-    event.preventDefault();
-    document.getElementById("button-container").classList.toggle("button-loading");
-    document.getElementById("submit-button").value = "";
-    
-    // Wait while showing animation
-    setTimeout(function() {
-        document.getElementById("userLogin").submit();
-    }, 2000);
-
-    // Call Api fetch here?
-}
-
 function toggleThemeIcon() {
     const themeIcon = document.getElementById("theme-icon");
 
@@ -211,6 +198,7 @@ function toggleThemeIcon() {
 
 function toggleDropdownMenu() {
     const menu = document.getElementById("dropdown-menu");
+
     if (menu.style.display === "flex") {
         menu.style.display = "none";
     } else {
@@ -218,10 +206,6 @@ function toggleDropdownMenu() {
     }
 }
 
-function closeDropdownMenu() {
-    const menu = document.getElementById("dropdown-menu");
-    menu.style.display = "none";
-}
 
 // Dark/light theme button
 toggleSwitch.addEventListener('change', () => {
@@ -230,13 +214,24 @@ toggleSwitch.addEventListener('change', () => {
     } else {
         console.log('Dark mode!');
     }
+
     // Toggle dark/light theme icon
     toggleThemeIcon();
 });
 
 // Close dropdown menu on window resize
 window.addEventListener('resize', () => {
-    if (window.innerWidth > 1000) {
-        closeDropdownMenu();
+    if (window.innerWidth >= 1000) {
+        const menu = document.getElementById("dropdown-menu");
+        menu.style.display = "none";
     }
 });
+
+
+
+
+
+// Debug
+if (window.innerWidth < 1000) {
+    toggleDropdownMenu();
+}
