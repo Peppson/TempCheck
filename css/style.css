@@ -6,8 +6,9 @@
     --grey: #68686d;
     --darkgrey: rgb(59, 59, 59);
     --accent-color: rgb(36, 88, 138);
+    --accent-color-light: rgb(56, 139, 218); 
     --toggle-btn-dark: #47474b;
-    --toggle-btn-light: rgb(56, 139, 218);
+    --toggle-btn-light: var(--accent-color-light);
 
     /* ----- Sizes ----- */
     --border-radius: 0px;
@@ -70,6 +71,11 @@ body {
     justify-content: center;
 }
 
+.text-underline {
+    text-decoration: underline !important;
+    text-decoration-color: black !important;
+    text-underline-offset: 6px;
+}
 
 
 
