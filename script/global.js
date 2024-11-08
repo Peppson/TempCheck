@@ -195,7 +195,6 @@ function displayVs(weatherData, win) {
 function setThemeIcon(theme) {
     const icons = document.querySelectorAll(".theme-icon");
 
-    // Change theme icon(s)
     setTimeout(function() {
         for (const icon of icons) {
             if (theme === "light") {
@@ -232,7 +231,7 @@ toggleSwitches.forEach((toggleSwitch) => {
         // Sync both buttons
         toggleSwitches.forEach(switchElem => switchElem.checked = isLightMode);
 
-        // Set theme, change icon
+        // Set theme, change icons
         if (isLightMode) {
             setThemeIcon("light");
             console.log("light mode!");

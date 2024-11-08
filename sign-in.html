@@ -67,12 +67,27 @@
             <form id="userLogin" action="index.html" onsubmit="onUserLogin(event)">
                 <div class="form-elements">
                     <label class="no-select" for="username">Name</label>
-                    <input type="text" id="username" name="username" maxlength="35" autocomplete="off" required>
+                    <input 
+                        class="input-default"
+                        type="text" 
+                        id="username" 
+                        name="username" 
+                        maxlength="30" 
+                        minlength="3" 
+                        autocomplete="off" 
+                        required>
                     <img class="input-icon no-select" src="icons/static/sign-in-username.svg" alt="|">
                 </div>
                 <div class="form-elements">
-                    <label class="no-select" for="username">Password</label>
-                    <input type="password" id="password" name="password" maxlength="35" autocomplete="123456789"
+                    <label class="no-select" for="password">Password</label>
+                    <input 
+                        class="input-default" 
+                        type="password" 
+                        id="password" 
+                        name="password" 
+                        maxlength="30" 
+                        minlength="3" 
+                        autocomplete="off" 
                         required>
                     <img class="input-icon no-select" src="icons/static/sign-in-password.svg" alt="|">
                 </div>
