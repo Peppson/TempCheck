@@ -45,13 +45,16 @@
 .input-field {
     padding-bottom:10px;
     display: flex;
-    flex-wrap: wrap;
+    
+}
+input[type="text"]
+{
     width: 100%;
 }
 
 #city-input {
 
-    flex-grow: 2;
+    flex: 2;
     padding: 5px;
     padding-left: 20px;
     border: 0;
@@ -65,7 +68,7 @@
 
 #weather-button {
     background-color: rgba(0, 0, 0, 0);
-    flex-grow: 1;
+    flex: 1;
     padding: 5px;
     border: none;
 }
@@ -94,6 +97,11 @@
     flex-direction: row;
     justify-content: space-between;
     width: 100%;
+}
+
+.svg-animated{
+    margin-top: -50px;
+    margin-bottom: -30px;
 }
 
 .title {
@@ -247,4 +255,15 @@ hr{
     0% { transform: translateX(0); }
     50% { transform: translateX(400px); }
     100% {transform: translateX(0);}
+}
+
+
+/* MEDIA QUERIES */
+
+
+@media all and (max-width: 830px) {
+    #display-info {
+        justify-content: center;
+        align-items: center; /* TODO */
+    }
 }
