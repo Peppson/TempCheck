@@ -21,7 +21,6 @@ function WeatherData() {
 }
 
 function getWeatherAtPosition() {
-
     navigator.geolocation.getCurrentPosition(
         (position) => {
             const { latitude, longitude } = position.coords;
