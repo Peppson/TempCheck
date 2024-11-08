@@ -7,16 +7,11 @@ header, footer {
     width: 100%;
     justify-content: space-between;
     color: var(--white);
-    /* background-color: #1b1bdd1e; */          /* <<<<<<<<<<<<<<<<<<<<<<< */
+    /* background-color: #47cdeb; */          /* <<<<<<<<<<<<<<<<<<<<<<< */
 }
 
 footer {
     height: 80px;
-}
-
-header div {
-    width: 370px;
-    /* background-color: #1b1bdd1e; */           /* <<<<<<<<<<<<<<<<<<<<<<< */
 }
 
 header div span {
@@ -42,24 +37,48 @@ footer li {
 
 footer li:hover { 
     cursor: pointer;
+    transition: transform 0.4s ease;
+    transform: scale(1.2);
 }
 
 footer p {
-    color: black;
+    color: var(--lightgrey);
+}
+
+.header-box-container {
+    width: 440px;
+    gap: 30px;
+    /* background-color: #47cdeb65; */           /* <<<<<<<<<<<<<<<<<<<<<<< */
+}
+
+.box {
+    width: 120px;
+    /* background-color: aqua; */
+}
+
+.switch-container img {
+    padding-right: 5px;
+}
+
+.header-icons {
+    margin: -13px;
 }
 
 .footer-icons {
     width: 30px;
 }
 
-.switch-container {
-    /* background-color: rgb(207, 233, 177); */
+.page-link {
+    text-decoration: none;
+    transition: transform 0.2s ease;
 }
 
-.switch-container p {
-    font-size: 18px;
+.page-link a {
     color: black;
-    padding: 6px;
+}
+
+.page-link:hover {
+    transform: scale(1.03);
 }
 
 #header-left {
@@ -72,6 +91,18 @@ footer p {
 #header-left img {
     width: 120px;
     margin-right: -18px;
+}
+
+#header-right {
+    justify-content: space-evenly;
+}
+
+#header-icon-2 {
+    padding-right: 4px;
+}
+
+#header-icon-3 {
+    padding-right: 8px;
 }
 
 @media all and (max-width: 830px) {

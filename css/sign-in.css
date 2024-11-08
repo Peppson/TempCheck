@@ -1,6 +1,3 @@
-body {
-    max-height: 900px;
-}
 
 form {
     margin-top: 60px;
@@ -41,6 +38,11 @@ main label {
     color: var(--lightgrey);
 }
 
+a,
+a:visited {
+    text-decoration: none;
+}
+
 .bg-image {
     position: fixed;
     top: 0;
@@ -59,15 +61,17 @@ main label {
     justify-content: center;
     height: 100%;
     padding: 20px;
+    margin-bottom: 90px;
 }
 
 .sign-in-container {
-    margin-top: 90px;
+    margin-top: 70px;
     max-width: 540px;
     width: 100%;
     height: 600px;
     padding: 40px 50px 40px 50px;
     justify-content: center;
+    margin-bottom: 90px;
 }
 
 .sign-up-text {
@@ -94,8 +98,8 @@ main label {
 .button-loading::after {
     content: "";
     position: absolute;
-    width: 22px;
-    height: 22px;
+    width: 24px;
+    height: 24px;
     top: 0;
     left: 0;
     right: 0;
@@ -118,13 +122,6 @@ main label {
 #forgot-password {
     color: var(--grey);
     cursor: default;
-}
-
-#header-left-sign-in {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
 }
 
 @keyframes button-loading-spinner {
