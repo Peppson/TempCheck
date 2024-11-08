@@ -1,4 +1,11 @@
 
+
+
+// Behövs func för att sätta tema + tema-knapp vid pages byte ¯\_(ツ)_/¯ 
+
+
+
+
 // Dark/Light mode toggle switch(s) 
 const toggleSwitches = document.querySelectorAll(".theme-toggle-button");
 
@@ -242,22 +249,3 @@ window.addEventListener('resize', () => {
         closeDropdownMenu();
     }
 });
-
-
-
-
-
-
-
-
-// -------- Debug -------- //
-const DEBUG = true;
-if (DEBUG) {
-    
-
-    if (window.innerWidth < 1000) {
-        toggleDropdownMenu();
-    }    
-
-
-}
