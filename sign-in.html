@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Temp°Check</title>
     <script src="./script/global.js" defer></script>
+    <script src="./script/sign-in.js" defer></script>
     <link rel="icon" href="./icons/static/cloudy-day-1.svg">
     <link rel="stylesheet" href="./css/style.css">
     <link rel="stylesheet" href="./css/sign-in.css">
@@ -17,14 +18,13 @@
     <div class="bg-image"></div>
 
     <header id="header">
-        <!-- Logo -->
         <div id="header-left" class="header-box-container align-center">
             <img  src="icons/animated/cloudy-day-1.svg" alt="Logo">
             <h1 class="text-no-wrap text-">Temp<span>°Check</span></h1>
         </div>
-
         <div id="header-right" class="header-box-container align-center">
-
+            
+            <!-- Desktop header -->
             <div id="header-desktop">
                 <!-- Compare -->
                 <div id="box-forecast" class="box page-link align-center text-underline">
@@ -65,7 +65,7 @@
 
     <!-- Mobile dropdown menu -->
     <nav id="dropdown-menu" class="dropdown-menu-wrapper hidden">
-        <div class="dropdown-menu font-large">
+        <div class="dropdown-menu">
             <!-- Compare -->
             <div id="box-forecast" class="box page-link align-center text-underline">
                 <img class="align-center header-icons" src="icons/static/header-icon-sun.svg" alt="|">
