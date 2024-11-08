@@ -50,6 +50,7 @@ footer p {
 
 .box {
     width: 120px;
+    margin-left: 10px;
 }
 
 .switch-container {
@@ -143,11 +144,19 @@ footer p {
     display: none;
 }
 
+/* Toggle mobile muricah menu */
 @media all and (max-width: 1000px) {
     #header-desktop {
         display: none;
     }
     #header-mobile {
         display: flex;
+    }
+}
+
+/* Remove logo text */
+@media all and (max-width: 480px) {
+    #header-logo-text {
+        display: none;
     }
 }

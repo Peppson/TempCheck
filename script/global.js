@@ -226,3 +226,12 @@ window.addEventListener('resize', () => {
         menu.style.display = "none";
     }
 });
+
+
+
+
+
+// Debug
+if (window.innerWidth < 1000) {
+    toggleDropdownMenu();
+}
