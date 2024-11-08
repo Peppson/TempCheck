@@ -97,3 +97,33 @@ a:visited {
     text-decoration-color: black !important;
     text-underline-offset: 6px;
 }
+
+
+
+
+
+
+
+.background-image {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: var(--background-image); /* Replace with your image URL */
+    background-size: cover;
+    background-position: center;
+    z-index: -1; /* Ensure it stays behind the content */
+}
+
+/* Slide-in content styling */
+.content {
+    transform: translateX(-100%);
+    opacity: 0;
+    transition: transform 0.5s ease, opacity 0.5s ease;
+}
+
+.content.active {
+    transform: translateX(0);
+    opacity: 1;
+}

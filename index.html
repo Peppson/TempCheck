@@ -96,6 +96,9 @@
         </div>
     </nav>
 
+
+<div class="content slide-in">
+
     <main class="main-page">
 
         <div class="top-section">
@@ -112,6 +115,8 @@
         </div>
         
     </main>
+
+</div>
 
     <footer class="transparent-blurred box-shadow">
         <div>
@@ -133,6 +138,40 @@
         </div>
     </footer>
 
+    
+
 </body>
+
+
+
+
+
+
+
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        // Trigger slide-in effect on page load
+        document.querySelector(".content").classList.add("active");
+    });
+
+    document.querySelectorAll("a").forEach(link => {
+        link.addEventListener("click", event => {
+            const href = link.getAttribute("href");
+            if (href && !href.startsWith("#")) { // Ignore anchor links
+                event.preventDefault();
+                document.querySelector(".content").classList.remove("active");
+                
+                setTimeout(() => {
+                    window.location.href = href;
+                }, 500); // Delay for transition duration
+            }
+        });
+    });
+</script>
+
+
+
+
+
 
 </html>
