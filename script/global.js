@@ -1,6 +1,13 @@
 
-// Dark/Light mode toggle switch
-const toggleSwitch = document.getElementById('toggleSwitch');
+
+
+// Behövs func för att sätta tema + tema-knapp vid pages byte ¯\_(ツ)_/¯ 
+
+
+
+
+// Dark/Light mode toggle switch(s) 
+const toggleSwitches = document.querySelectorAll(".theme-toggle-button");
 
 
 function WeatherData() {
@@ -182,26 +189,61 @@ function displayVs(weatherData, win) {
     })
 }
 
-function onUserLogin(event) {
-    event.preventDefault();
-    document.getElementById("button-container").classList.toggle("button-loading");
-    document.getElementById("submit-button").value = "";
+// Set theme icons. Params "light" || "dark"
+function setThemeIcon(theme) {
+    const icons = document.querySelectorAll(".theme-icon");
 
-    // Wait while showing animation
-    setTimeout(function () {
-        document.getElementById("userLogin").submit();
-    }, 2000);
-
-    // Call Api fetch here?
-    
+    // Change theme icon(s)
+    setTimeout(function() {
+        for (const icon of icons) {
+            if (theme === "light") {
+                icon.innerHTML = `<img src="icons/static/header-icon-sun.svg" alt="|">`;
+            } else if (theme === "dark") {
+                icon.innerHTML = `<img src="icons/static/header-icon-dark.svg" alt="|">`;
+            } else {
+                alert("Error! in setThemeIcon()");
+            }
+        }
+    }, 75);
 }
-getWeatherAtPosition(); // DEN BA KÖR
 
-
-toggleSwitch.addEventListener('change', () => {
-    if (toggleSwitch.checked) {
-        console.log('Light mode!');
+function toggleDropdownMenu() {
+    const menu = document.getElementById("dropdown-menu");
+    if (menu.style.display === "flex") {
+        menu.style.display = "none";
     } else {
-        console.log('Dark mode!');
+        menu.style.display = "flex";
+    }
+}
+
+function closeDropdownMenu() {
+    const menu = document.getElementById("dropdown-menu");
+    menu.style.display = "none";
+}
+
+
+// On Theme-button press
+toggleSwitches.forEach((toggleSwitch) => {
+    toggleSwitch.addEventListener("change", () => {
+        const isLightMode = toggleSwitch.checked;
+        
+        // Sync both buttons
+        toggleSwitches.forEach(switchElem => switchElem.checked = isLightMode);
+
+        // Set theme, change icon
+        if (isLightMode) {
+            setThemeIcon("light");
+            console.log("light mode!");
+        } else {
+            setThemeIcon("dark");
+            console.log("dark mode!");
+        }
+    });
+});
+
+// Close dropdown menu on window resize
+window.addEventListener('resize', () => {
+    if (window.innerWidth >= 1000) {
+        closeDropdownMenu();
     }
 });
