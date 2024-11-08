@@ -1,6 +1,13 @@
 
-// Dark/Light mode toggle switch
-const toggleSwitch = document.getElementById("toggleSwitch");
+
+
+// Behövs func för att sätta tema + tema-knapp vid pages byte ¯\_(ツ)_/¯ 
+
+
+
+
+// Dark/Light mode toggle switch(s) 
+const toggleSwitches = document.querySelectorAll(".theme-toggle-button");
 
 
 function WeatherData() {
@@ -184,21 +191,26 @@ function displayVs(weatherData, win) {
     })
 }
 
-function toggleThemeIcon() {
-    const themeIcon = document.getElementById("theme-icon");
+// Set theme icons. Params "light" || "dark"
+function setThemeIcon(theme) {
+    const icons = document.querySelectorAll(".theme-icon");
 
+    // Change theme icon(s)
     setTimeout(function() {
-        if (themeIcon.innerHTML.includes("header-icon-sun.svg")) {
-            themeIcon.innerHTML = `<img src="icons/static/header-icon-dark.svg" alt="|">`;
-        } else {
-            themeIcon.innerHTML = `<img src="icons/static/header-icon-sun.svg" alt="|">`;
-        }  
-    }, 75);    
+        for (const icon of icons) {
+            if (theme === "light") {
+                icon.innerHTML = `<img src="icons/static/header-icon-sun.svg" alt="|">`;
+            } else if (theme === "dark") {
+                icon.innerHTML = `<img src="icons/static/header-icon-dark.svg" alt="|">`;
+            } else {
+                alert("Error! in setThemeIcon()");
+            }
+        }
+    }, 75);
 }
 
 function toggleDropdownMenu() {
     const menu = document.getElementById("dropdown-menu");
-
     if (menu.style.display === "flex") {
         menu.style.display = "none";
     } else {
@@ -206,32 +218,34 @@ function toggleDropdownMenu() {
     }
 }
 
+function closeDropdownMenu() {
+    const menu = document.getElementById("dropdown-menu");
+    menu.style.display = "none";
+}
 
-// Dark/light theme button
-toggleSwitch.addEventListener('change', () => {
-    if (toggleSwitch.checked) {
-        console.log('Light mode!');
-    } else {
-        console.log('Dark mode!');
-    }
 
-    // Toggle dark/light theme icon
-    toggleThemeIcon();
+// On Theme-button press
+toggleSwitches.forEach((toggleSwitch) => {
+    toggleSwitch.addEventListener("change", () => {
+        const isLightMode = toggleSwitch.checked;
+        
+        // Sync both buttons
+        toggleSwitches.forEach(switchElem => switchElem.checked = isLightMode);
+
+        // Set theme, change icon
+        if (isLightMode) {
+            setThemeIcon("light");
+            console.log("light mode!");
+        } else {
+            setThemeIcon("dark");
+            console.log("dark mode!");
+        }
+    });
 });
 
 // Close dropdown menu on window resize
 window.addEventListener('resize', () => {
     if (window.innerWidth >= 1000) {
-        const menu = document.getElementById("dropdown-menu");
-        menu.style.display = "none";
+        closeDropdownMenu();
     }
 });
-
-
-
-
-
-// Debug
-if (window.innerWidth < 1000) {
-    toggleDropdownMenu();
-}

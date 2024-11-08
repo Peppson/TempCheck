@@ -18,11 +18,6 @@ input[type=password] {
     border-bottom: 2px solid var(--white);
 }
 
-/* input[type="text"]:focus,
-input[type="password"]:focus {
-    border-bottom: 2px solid var(--accent-color-light);
-} */
-
 input[type=submit] {
     font-size: 20px;
     cursor: pointer;
@@ -43,7 +38,7 @@ main label {
     justify-content: center;
     height: 100%;
     padding: 20px;
-    margin-bottom: 90px;
+    
 }
 
 .sign-in-container {
@@ -53,7 +48,6 @@ main label {
     height: 600px;
     padding: 40px 50px 40px 50px;
     justify-content: center;
-    margin-bottom: 90px;
 }
 
 .sign-up-text {
