@@ -1,6 +1,6 @@
 
 // Dark/Light mode toggle switch
-const toggleSwitch = document.getElementById('toggleSwitch');
+const toggleSwitch = document.getElementById("toggleSwitch");
 
 
 function WeatherData() {
@@ -188,13 +188,34 @@ function toggleThemeIcon() {
     }, 75);    
 }
 
+function toggleDropdownMenu() {
+    const menu = document.getElementById("dropdown-menu");
+    if (menu.style.display === "flex") {
+        menu.style.display = "none";
+    } else {
+        menu.style.display = "flex";
+    }
+}
+
+function closeDropdownMenu() {
+    const menu = document.getElementById("dropdown-menu");
+    menu.style.display = "none";
+}
+
+// Dark/light theme button
 toggleSwitch.addEventListener('change', () => {
     if (toggleSwitch.checked) {
         console.log('Light mode!');
     } else {
         console.log('Dark mode!');
     }
-
     // Toggle dark/light theme icon
     toggleThemeIcon();
+});
+
+// Close dropdown menu on window resize
+window.addEventListener('resize', () => {
+    if (window.innerWidth > 1000) {
+        closeDropdownMenu();
+    }
 });
