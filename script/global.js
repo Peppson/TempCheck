@@ -176,6 +176,17 @@ function onUserLogin(event) {
     // Call Api fetch here?
 }
 
+function toggleThemeIcon() {
+    const themeIcon = document.getElementById("theme-icon");
+
+    setTimeout(function() {
+        if (themeIcon.innerHTML.includes("header-icon-sun.svg")) {
+            themeIcon.innerHTML = `<img src="icons/static/header-icon-dark.svg" alt="|">`;
+        } else {
+            themeIcon.innerHTML = `<img src="icons/static/header-icon-sun.svg" alt="|">`;
+        }  
+    }, 75);    
+}
 
 toggleSwitch.addEventListener('change', () => {
     if (toggleSwitch.checked) {
@@ -183,4 +194,7 @@ toggleSwitch.addEventListener('change', () => {
     } else {
         console.log('Dark mode!');
     }
+
+    // Toggle dark/light theme icon
+    toggleThemeIcon();
 });
