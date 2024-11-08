@@ -36,8 +36,6 @@ function getWeatherAtPosition() {
     );
 }
 
-getWeatherAtPosition(); // DEN BA KÖR
-
 function displayWeatherData(weatherData) {
     const infoText = document.getElementById("display-info");
     const iconCode = weatherData.weather[0].icon;
@@ -168,14 +166,16 @@ function onUserLogin(event) {
     event.preventDefault();
     document.getElementById("button-container").classList.toggle("button-loading");
     document.getElementById("submit-button").value = "";
-    
+
     // Wait while showing animation
-    setTimeout(function() {
+    setTimeout(function () {
         document.getElementById("userLogin").submit();
     }, 2000);
 
     // Call Api fetch here?
+    
 }
+getWeatherAtPosition(); // DEN BA KÖR
 
 
 toggleSwitch.addEventListener('change', () => {
