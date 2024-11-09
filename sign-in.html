@@ -67,12 +67,27 @@
             <form id="userLogin" action="index.html" onsubmit="onUserLogin(event)">
                 <div class="form-elements">
                     <label class="no-select" for="username">Name</label>
-                    <input type="text" id="username" name="username" maxlength="35" autocomplete="off" required>
+                    <input 
+                        class="input-default"
+                        type="text" 
+                        id="username" 
+                        name="username" 
+                        maxlength="30" 
+                        minlength="3" 
+                        autocomplete="off" 
+                        required>
                     <img class="input-icon no-select" src="icons/static/sign-in-username.svg" alt="|">
                 </div>
                 <div class="form-elements">
-                    <label class="no-select" for="username">Password</label>
-                    <input type="password" id="password" name="password" maxlength="35" autocomplete="123456789"
+                    <label class="no-select" for="password">Password</label>
+                    <input 
+                        class="input-default" 
+                        type="password" 
+                        id="password" 
+                        name="password" 
+                        maxlength="30" 
+                        minlength="3" 
+                        autocomplete="off" 
                         required>
                     <img class="input-icon no-select" src="icons/static/sign-in-password.svg" alt="|">
                 </div>
@@ -86,11 +101,19 @@
 
     <footer class="transparent-blurred box-shadow">
         <div>
-            <ul>
-                <li><img class="footer-icons" src="./icons/static/footer_github.svg" alt="Github"></li>
-                <li><img class="footer-icons" src="./icons/static/footer_instagram.svg" alt="Instagram"></li>
-                <li><img class="footer-icons" src="./icons/static/footer_facebook.svg" alt="Facebook"></li>
-                <li><img class="footer-icons" src="./icons/static/footer_linkedin.svg" alt="LinkedIn"></li>
+            <ul> 
+                <li><a href="https://www.youtube.com/watch?v=xvFZjo5PgG0" target="_blank" rel="noopener noreferrer">
+                    <img class="footer-icons" src="./icons/static/footer_github.svg" alt="Github"></a>
+                </li>
+                <li><a href="https://www.youtube.com/watch?v=xvFZjo5PgG0" target="_blank" rel="noopener noreferrer">
+                    <img class="footer-icons" src="./icons/static/footer_instagram.svg" alt="Instagram"></a>
+                </li>
+                <li><a href="https://www.youtube.com/watch?v=xvFZjo5PgG0" target="_blank" rel="noopener noreferrer">
+                    <img class="footer-icons" src="./icons/static/footer_facebook.svg" alt="Facebook"></a>
+                </li>
+                <li><a href="https://www.youtube.com/watch?v=xvFZjo5PgG0" target="_blank" rel="noopener noreferrer">
+                    <img class="footer-icons" src="./icons/static/footer_linkedin.svg" alt="LinkedIn"></a>
+                </li>
             </ul>
             <p class="text-center no-select">© Temp°Check</p>
         </div>
