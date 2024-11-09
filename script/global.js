@@ -3,7 +3,7 @@
 const toggleSwitches = document.querySelectorAll(".theme-toggle-button");
 
 /* FETCH CURRENT WEATHER API  */
-function fetchCurrentWeather({city, latitude, longitude}) {
+function fetchCurrentWeather({ city, latitude, longitude }) {
 
     let weatherURL;
     if (city) {
@@ -22,7 +22,7 @@ function fetchCurrentWeather({city, latitude, longitude}) {
 }
 
 /* FETCH FORECAST API */
-function fetchForecast({city, latitude, longitude}) {
+function fetchForecast({ city, latitude, longitude }) {
 
     let forecastURL;
     if (city) {
@@ -73,31 +73,70 @@ function displayWeatherData(weatherData) {
     const iconCode = weatherData.weather[0].icon;
     const temp = Math.round(weatherData.main.temp);
     const iconPath = getSVGIcon(iconCode);
-    const today = new Date().toLocaleDateString('en-US', { weekday: 'long' });
+    const today = new Date().toLocaleDateString('en-US', {
+        weekday: 'long',
+        month: 'short',
+        day: 'numeric'
+    });
 
     infoText.innerHTML = `
     <div class="icon-info">
-        <div>${weatherData.name}, ${weatherData.sys.country}</div>
+    <div>${weatherData.name}, ${weatherData.sys.country}</div>
+        <div class="today-date">${today}</div>
         <img class="svg-animated" src="${iconPath}" width="250px" height="250px">
         <div>${weatherData.weather[0].description}</div>
     </div>
     <div class="information-box">
-        <div>${today}</div>
-        <div class="temp-info">${temp}<div class="degree-icon">°</div></div>
+        <div class="temp-info">${temp}<span class="degree-icon">°</span></div>
     </div>`;
 }
 
 /* PRINTING OUT THE FORECAST DATA */
-function displayForecast(data) {
-    const forecastContainer = document.getElementById("forecast");
-    forecastContainer.innerHTML = "";
 
+function displayForecast(data) {
     const today = new Date().toLocaleDateString('en-US');
+    const hourlyForecastContainer = document.getElementById("hourly-forecast");
+    const dailyForecastContainer = document.getElementById("daily-forecast");
+    hourlyForecastContainer.innerHTML = "";
+    dailyForecastContainer.innerHTML = "";
+
+    displayHourlyForecast(data, hourlyForecastContainer);
+    displayDailyForecast(data, today, dailyForecastContainer);
+}
+
+/* DISPLAY HOURLY */
+function displayHourlyForecast(data, container) {
+    const hourlyForecasts = data.list.slice(0, 5);
+
+    hourlyForecasts.forEach((forecast) => {
+        const time = new Date(forecast.dt_txt).toLocaleTimeString('en-US', {
+            hour: '2-digit',
+            minute: '2-digit',
+            hour12: false
+        });
+        const temp = Math.round(forecast.main.temp);
+        const iconCode = forecast.weather[0].icon;
+        const iconPath = getSVGIcon(iconCode);
+
+        const forecastCard = document.createElement("div");
+        forecastCard.classList.add("forecast-card");
+
+        forecastCard.innerHTML = `
+            <div class="forecast-day">${time}</div>
+            <img class="forecast-icon" src="${iconPath}" alt="Weather Icon">
+            <div class="forecast-temp">${temp}°C</div>
+        `;
+
+        container.appendChild(forecastCard);
+    });
+}
+
+/* DISPLAY DAILY FORECAST */
+function displayDailyForecast(data, today, container) {
     const dailyForecasts = data.list.filter(entry => {
         const entryDate = new Date(entry.dt_txt).toLocaleDateString('en-US');
         return entry.dt_txt.includes("12:00:00") && entryDate !== today;
     })
-
     dailyForecasts.forEach((forecast) => {
         const dayOfWeek = new Date(forecast.dt_txt).toLocaleDateString('en-US', { weekday: 'short' });
         const temp = Math.round(forecast.main.temp);
@@ -113,8 +152,32 @@ function displayForecast(data) {
             <div class="forecast-temp">${temp}°C</div>
         `;
 
-        forecastContainer.appendChild(forecastCard);
+        container.appendChild(forecastCard);
     });
+}
+
+/* SHOW/HIDE HOURLY FORECAST */
+function showHourlyForecast() {
+    const hourlyForecastContainer = document.getElementById("hourly-forecast");
+    const dailyForecastContainer = document.getElementById("daily-forecast");
+
+    hourlyForecastContainer.style.display = "flex";
+    dailyForecastContainer.style.display = "none";
+
+    document.getElementById("show-hourly").classList.add("active-button");
+    document.getElementById("show-daily").classList.remove("active-button");
+}
+
+// /* SHOW/HIDE DAILY FORECASTS */
+function showDailyForecast() {
+    const hourlyForecastContainer = document.getElementById("hourly-forecast");
+    const dailyForecastContainer = document.getElementById("daily-forecast");
+
+    hourlyForecastContainer.style.display = "none";
+    dailyForecastContainer.style.display = "flex";
+
+    document.getElementById("show-daily").classList.add("active-button");
+    document.getElementById("show-hourly").classList.remove("active-button");
 }
 
 /* MATCHING THE ICON CODES WITH SVGs */
@@ -250,7 +313,7 @@ function displayVs(weatherData, win) {
 function setThemeIcon(theme) {
     const icons = document.querySelectorAll(".theme-icon");
 
-    setTimeout(function() {
+    setTimeout(function () {
 
         for (const icon of icons) {
             if (theme === "light") {
@@ -283,7 +346,7 @@ function closeDropdownMenu() {
 toggleSwitches.forEach((toggleSwitch) => {
     toggleSwitch.addEventListener("change", () => {
         const isLightTheme = toggleSwitch.checked;
-        
+
         // Sync both buttons
         toggleSwitches.forEach(switchElem => switchElem.checked = isLightTheme);
 

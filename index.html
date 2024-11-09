@@ -103,16 +103,29 @@
         <div class="top-section">
 
             <div class="weather-container">
+
                 <div class="input-field">
+
                     <input type="text" id="city-input" placeholder="Enter...">
                     <button id="weather-button" onclick="WeatherData()">Search</button>
-                </div>
-                <div id="display-info">Information will be displayed here</div>
-                <hr>
-                <div id="forecast">
 
-                    <div id="forecast-info"></div>
                 </div>
+
+                <div id="display-info">Information will be displayed here</div>
+
+                <div class="toggle-buttons-container">
+
+                    <button id="show-hourly" class="toggle-buttons active-button" onclick="showHourlyForecast()">Hourly</button>
+
+                    <button id="show-daily" class="toggle-buttons" onclick="showDailyForecast()">Daily</button>
+                </div>
+
+                <hr>
+
+                <div id="hourly-forecast" class="forecast-section" style="display: flex;"></div>
+                <div id="daily-forecast" class="forecast-section" style="display: none;"></div>
+                <div id="forecast-info"></div>
+
             </div>
 
         </div>
@@ -121,25 +134,26 @@
 
     <footer class="transparent-blurred box-shadow">
         <div>
-            <ul> 
+            <ul>
                 <li><a href="https://www.youtube.com/watch?v=xvFZjo5PgG0" target="_blank" rel="noopener noreferrer">
-                    <img class="footer-icons" src="./icons/static/footer_github.svg" alt="Github"></a>
+                        <img class="footer-icons" src="./icons/static/footer_github.svg" alt="Github"></a>
                 </li>
                 <li><a href="https://www.youtube.com/watch?v=xvFZjo5PgG0" target="_blank" rel="noopener noreferrer">
-                    <img class="footer-icons" src="./icons/static/footer_instagram.svg" alt="Instagram"></a>
+                        <img class="footer-icons" src="./icons/static/footer_instagram.svg" alt="Instagram"></a>
                 </li>
                 <li><a href="https://www.youtube.com/watch?v=xvFZjo5PgG0" target="_blank" rel="noopener noreferrer">
-                    <img class="footer-icons" src="./icons/static/footer_facebook.svg" alt="Facebook"></a>
+                        <img class="footer-icons" src="./icons/static/footer_facebook.svg" alt="Facebook"></a>
                 </li>
                 <li><a href="https://www.youtube.com/watch?v=xvFZjo5PgG0" target="_blank" rel="noopener noreferrer">
-                    <img class="footer-icons" src="./icons/static/footer_linkedin.svg" alt="LinkedIn"></a>
+                        <img class="footer-icons" src="./icons/static/footer_linkedin.svg" alt="LinkedIn"></a>
                 </li>
             </ul>
             <p class="text-center no-select">© Temp°Check</p>
         </div>
     </footer>
 
-    
+
 
 </body>
+
 </html>
