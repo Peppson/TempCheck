@@ -27,12 +27,13 @@
 .compare-weather-container {
     width: 100%;
     background-color: rgba(0, 0, 0, 0.25);
+    max-width: 800px;
     min-height: 500px;
 }
 
 .weather-container {
-    max-width: 700px;
     border-radius: 20px;
+    padding: 40px 50px 40px 50px;
     backdrop-filter: blur(var(--blur-medium));
     display: flex;
     flex-direction: column;
@@ -44,7 +45,7 @@
 }
 
 .input-field {
-    padding-bottom:10px;
+    padding-bottom:30px;
     display: flex;
     
 }
@@ -81,28 +82,32 @@ input[type="text"]
     font-size: 30px;
     color: var(--lightgrey);
     padding-top: 20px;
-    padding-bottom: 20px;
+    padding-bottom: 5x;
 }
 
 #weather-button:hover {
     cursor: pointer;
     color: var(--white);
-    background-color: var(--darkgrey);
+    background: linear-gradient(0deg, rgba(255, 255, 255, 0.5) 0%, rgba(255,226,0,0) 100%);
+
 }
 
 #display-info {
     line-height: 1;
-    color: white;
+    color: var(--white);
     font-size: 30px;
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;
     justify-content: space-between;
     width: 100%;
+    padding-bottom: 20px
 }
 
+
+
 .svg-animated{
-    margin-top: -50px;
+    margin-top: -20px;
     margin-bottom: -30px;
 }
 
@@ -116,16 +121,21 @@ input[type="text"]
     flex-direction: column;
     align-items: center;
     margin-bottom: 20px;
+    gap:10px;
+}
+.today-date{
+    font-size: 20px;
+    color: var(--lightgrey);
 }
 
 .temp-info {
-    font-size: 200px;
+    font-size: 300px;
     display: flex;
     
 }
 
 .degree-icon{
-    font-size: 80px;
+    font-size: 100px;
     margin-left: -10px;
 }
 
@@ -146,14 +156,6 @@ hr{
 /* FORECAST INFO */
 
 
-#forecast {
-    display: flex;
-    justify-content: space-around;
-    gap: 20px;
-    padding: 20px;
-    width: 100%;
-}
-
 .forecast-card {
     display: flex;
     flex-direction: column;
@@ -163,7 +165,7 @@ hr{
 
 .forecast-day {
     font-size: 18px;
-    color: white;
+    color: var(--white);
 }
 
 .forecast-icon {
@@ -173,9 +175,43 @@ hr{
 
 .forecast-temp {
     font-size: 24px;
-    color: white;
+    color: var(--white);
     font-weight: bold;
 }
+
+.forecast-section{
+    display: flex;
+    justify-content: space-around;
+    gap: 20px;
+    padding: 20px;
+    width: 100%;
+}
+
+.forecast-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.toggle-buttons-container{
+    display: flex;
+
+}
+.toggle-buttons{
+    flex:1;
+    color: var(--white);
+    font-size: 28px;
+    padding:15px;
+    border: none;
+    background: transparent;
+}
+.active-button{
+    background: linear-gradient(0deg, rgba(255, 255, 255, 0.5) 0%, rgba(255,226,0,0) 100%);
+}
+.toggle-buttons:hover{
+    cursor: pointer;
+}
+
 
 
 /* Bottom div */
@@ -212,7 +248,7 @@ hr{
 
 .dropdown-btn {
     background-color: rgba(0, 0, 0, 0.25);
-    color: white;
+    color: var(--white);
     padding: 16px;
     font-size: 16px;
     border: none;
@@ -313,9 +349,10 @@ hr{
     }
 }
 
-@media all and (max-width: 700px) {
+@media all and (max-width: 800px) {
     .weather-container {
         border-radius: 0px;
+        padding: 20px;
     }
     #weather-button{
         border-top-right-radius: 0px;
@@ -324,6 +361,10 @@ hr{
 
 
 @media all and (max-width: 450px) {
+    .weather-container {
+        border-radius: 0px;
+        padding: 0px;
+    }
     .forecast-card {
       gap:0px;
 
@@ -354,12 +395,12 @@ hr{
 
 
 @media all and (max-width: 550px) {
-    #forecast {
-      gap:0px;
+  
+    .forecast-section{
+        gap:0px;
       padding:0px;
       padding-top:10px;
       padding-bottom: 10px;
-
     }
 }
 
