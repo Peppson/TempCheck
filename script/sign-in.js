@@ -4,7 +4,7 @@ function onUserLogin(event) {
     document.getElementById("button-container").classList.toggle("button-loading");
     document.getElementById("submit-button").value = "";
     
-    // Wait 2s before submitting form with animation
+    // Animation
     setTimeout(function() {
         document.getElementById("userLogin").submit();
     }, 2000);
@@ -24,7 +24,7 @@ function colorInputField(field) {
     }
 }
 
-// Color input fields if not empty
+// Color input fields border when not empty
 document.getElementById("username").addEventListener("input", function() {
     colorInputField(this);
 });
