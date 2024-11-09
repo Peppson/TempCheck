@@ -13,11 +13,6 @@ input {
     color: var(--white);
 }
 
-input[type=text],
-input[type=password] {
-    border-bottom: 2px solid var(--white);
-}
-
 input[type=submit] {
     font-size: 20px;
     cursor: pointer;
@@ -31,6 +26,16 @@ input[type=submit]:hover {
 
 main label {
     color: var(--white);
+}
+
+.input-default {
+    border-bottom: 2px solid var(--white);
+    transition: border-color 0.8s ease;
+}
+
+.input-filled {
+    border-bottom: 2px solid var(--accent-color-light);
+    transition: border-color 0.8s ease;
 }
 
 .sign-in-page {

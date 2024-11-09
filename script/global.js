@@ -1,11 +1,4 @@
 
-
-
-// Behövs func för att sätta tema + tema-knapp vid pages byte ¯\_(ツ)_/¯ 
-
-
-
-
 // Dark/Light mode toggle switch(s) 
 const toggleSwitches = document.querySelectorAll(".theme-toggle-button");
 
@@ -195,7 +188,6 @@ function displayVs(weatherData, win) {
 function setThemeIcon(theme) {
     const icons = document.querySelectorAll(".theme-icon");
 
-    // Change theme icon(s)
     setTimeout(function() {
         for (const icon of icons) {
             if (theme === "light") {
@@ -227,13 +219,12 @@ function closeDropdownMenu() {
 // On Theme-button press
 toggleSwitches.forEach((toggleSwitch) => {
     toggleSwitch.addEventListener("change", () => {
-        const isLightMode = toggleSwitch.checked;
+        const isLightTheme = toggleSwitch.checked;
         
         // Sync both buttons
-        toggleSwitches.forEach(switchElem => switchElem.checked = isLightMode);
+        toggleSwitches.forEach(switchElem => switchElem.checked = isLightTheme);
 
-        // Set theme, change icon
-        if (isLightMode) {
+        if (isLightTheme) {
             setThemeIcon("light");
             console.log("light mode!");
         } else {
