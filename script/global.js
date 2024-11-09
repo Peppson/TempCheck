@@ -9,41 +9,72 @@
 // Dark/Light mode toggle switch(s) 
 const toggleSwitches = document.querySelectorAll(".theme-toggle-button");
 
+/* FETCH CURRENT WEATHER API  */
+function fetchCurrentWeather({city, latitude, longitude}) {
 
-function WeatherData() {
-    const cityInput = document.getElementById('city-input').value;
-
-    if (cityInput == '') {
-        document.getElementById("display-info").innerText = "Please enter a city name.";
-        return;
+    let weatherURL;
+    if (city) {
+        weatherURL = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=5d701d369d46aa133c404b3d2ec1d506&units=metric`;
+    } else if (latitude && longitude) {
+        weatherURL = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=5d701d369d46aa133c404b3d2ec1d506&units=metric`;
     }
-
-    fetch(`https://api.openweathermap.org/data/2.5/weather?q=${cityInput}&appid=5d701d369d46aa133c404b3d2ec1d506&units=metric`)
+    /* GET CURRENT WEATHER INFO */
+    fetch(weatherURL)
         .then((response) => response.json())
         .then(displayWeatherData)
         .catch((error) => {
-            document.getElementById("display-info").innerText = "Enter a real city, dummy";
-            console.error("Error:", error);
+            document.getElementById("display-info").innerText = "Error retrieving weather data. Please try again.";
+            console.error("Weather Error:", error);
         });
 }
 
+/* FETCH FORECAST API */
+function fetchForecast({city, latitude, longitude}) {
+
+    let forecastURL;
+    if (city) {
+        forecastURL = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=5d701d369d46aa133c404b3d2ec1d506&units=metric`;
+    } else if (latitude && longitude) {
+        forecastURL = `https://api.openweathermap.org/data/2.5/forecast?lat=${latitude}&lon=${longitude}&appid=5d701d369d46aa133c404b3d2ec1d506&units=metric`;
+    }
+
+    /* GET FORECAST INFO */
+    fetch(forecastURL)
+        .then((response) => response.json())
+        .then(displayForecast)
+        .catch((error) => {
+            document.getElementById("forecast-info").innerText = "Error retrieving forecast data. Please try again.";
+            console.error("Forecast Error:", error);
+        });
+}
+
+/* BY USER INPUT */
+function WeatherData() {
+    const cityInputElement = document.getElementById('city-input');
+    const cityInput = cityInputElement.value;
+
+    /* call the two API by user input */
+    fetchCurrentWeather({ city: cityInput });
+    fetchForecast({ city: cityInput });
+    cityInputElement.value = '';
+}
+
+/* BY USER POSITION */
 function getWeatherAtPosition() {
     navigator.geolocation.getCurrentPosition(
         (position) => {
             const { latitude, longitude } = position.coords;
-            fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=5d701d369d46aa133c404b3d2ec1d506&units=metric`)
-                .then((response) => response.json())
-                .then(displayWeatherData)
-                .catch((error) => {
-                    document.getElementById("display-info").innerText = "Could not retrieve weather data for your location.";
-                    console.error("Error:", error);
-                });
+            /* call the two API by longitude and latidude. */
+            fetchCurrentWeather({ latitude, longitude });
+            fetchForecast({ latitude, longitude });
         }
     );
 }
 
-getWeatherAtPosition(); // DEN BA KÖR
+/* RUN WHEN STARTING PROGRAM */
+getWeatherAtPosition();
 
+/* PRINTING OUT THE CURRENT WEATHER DATA */
 function displayWeatherData(weatherData) {
     const infoText = document.getElementById("display-info");
     const iconCode = weatherData.weather[0].icon;
@@ -53,16 +84,47 @@ function displayWeatherData(weatherData) {
 
     infoText.innerHTML = `
     <div class="icon-info">
-    <div> ${today}</div>
-    <img class="svg-animated" src="${iconPath}" width="250px" height="250px">
-    <div> ${weatherData.weather[0].description}</div>
+        <div>${weatherData.name}, ${weatherData.sys.country}</div>
+        <img class="svg-animated" src="${iconPath}" width="250px" height="250px">
+        <div>${weatherData.weather[0].description}</div>
     </div>
     <div class="information-box">
-    <div>${weatherData.name}, ${weatherData.sys.country}</div>
-    <div class="temp-info">${temp}°</div>
+        <div>${today}</div>
+        <div class="temp-info">${temp}<div class="degree-icon">°</div></div>
     </div>`;
 }
 
+/* PRINTING OUT THE FORECAST DATA */
+function displayForecast(data) {
+    const forecastContainer = document.getElementById("forecast");
+    forecastContainer.innerHTML = "";
+
+    const today = new Date().toLocaleDateString('en-US');
+    const dailyForecasts = data.list.filter(entry => {
+        const entryDate = new Date(entry.dt_txt).toLocaleDateString('en-US');
+        return entry.dt_txt.includes("12:00:00") && entryDate !== today;
+    })
+
+    dailyForecasts.forEach((forecast) => {
+        const dayOfWeek = new Date(forecast.dt_txt).toLocaleDateString('en-US', { weekday: 'short' });
+        const temp = Math.round(forecast.main.temp);
+        const iconCode = forecast.weather[0].icon;
+        const iconPath = getSVGIcon(iconCode);
+
+        const forecastCard = document.createElement("div");
+        forecastCard.classList.add("forecast-card");
+
+        forecastCard.innerHTML = `
+            <div class="forecast-day">${dayOfWeek}</div>
+            <img class="forecast-icon" src="${iconPath}" alt="Weather Icon">
+            <div class="forecast-temp">${temp}°C</div>
+        `;
+
+        forecastContainer.appendChild(forecastCard);
+    });
+}
+
+/* MATCHING THE ICON CODES WITH SVGs */
 function getSVGIcon(iconCode) {
     let iconPath;
     switch (iconCode) {
@@ -167,8 +229,8 @@ function displayVs(weatherData, win) {
     const windComp = Math.round(weatherData.wind.speed);
     const iconPath = getSVGIcon(iconCode);
 
-    infoTextCollection.classList.add(`move-${win}`);  
-    setTimeout(function() {
+    infoTextCollection.classList.add(`move-${win}`);
+    setTimeout(function () {
         infoTextCollection.innerHTML = `
         <div class="vs-info">userLoginAnimation
         <div class=city-info>${weatherData.name}, ${weatherData.sys.country}</div>
@@ -176,9 +238,9 @@ function displayVs(weatherData, win) {
         </div>
         <div class="vs-temp-info">${temp}°C</div>`;
     }, 1000);
-    infoTextCollection.addEventListener('animationend', function handleAnimationEnd() { 
+    infoTextCollection.addEventListener('animationend', function handleAnimationEnd() {
         infoTextCollection.classList.remove(`move-${win}`);
-        
+
         compareWindow.innerHTML = `
         <div class="temp-comp">${temp}</div>
         <div class="feels-comp">${feelsComp}</div>
@@ -187,7 +249,7 @@ function displayVs(weatherData, win) {
         <div class="humidity-comp">${humiComp}</div>
         <div class="wind-comp">${windComp}</div>
         `
-        
+
     })
 }
 
@@ -196,7 +258,7 @@ function setThemeIcon(theme) {
     const icons = document.querySelectorAll(".theme-icon");
 
     // Change theme icon(s)
-    setTimeout(function() {
+    setTimeout(function () {
         for (const icon of icons) {
             if (theme === "light") {
                 icon.innerHTML = `<img src="icons/static/header-icon-sun.svg" alt="|">`;
@@ -228,7 +290,7 @@ function closeDropdownMenu() {
 toggleSwitches.forEach((toggleSwitch) => {
     toggleSwitch.addEventListener("change", () => {
         const isLightMode = toggleSwitch.checked;
-        
+
         // Sync both buttons
         toggleSwitches.forEach(switchElem => switchElem.checked = isLightMode);
 

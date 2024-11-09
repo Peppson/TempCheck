@@ -25,13 +25,14 @@
 
 .weather-container,
 .compare-weather-container {
-    max-width: 800px;
     width: 100%;
     background-color: rgba(0, 0, 0, 0.25);
     min-height: 500px;
 }
 
 .weather-container {
+    max-width: 700px;
+    border-radius: 20px;
     backdrop-filter: blur(var(--blur-medium));
     display: flex;
     flex-direction: column;
@@ -67,6 +68,7 @@ input[type="text"]
 }
 
 #weather-button {
+    border-top-right-radius: 20px;
     background-color: rgba(0, 0, 0, 0);
     flex: 1;
     padding: 5px;
@@ -118,6 +120,13 @@ input[type="text"]
 
 .temp-info {
     font-size: 200px;
+    display: flex;
+    
+}
+
+.degree-icon{
+    font-size: 80px;
+    margin-left: -10px;
 }
 
 .information-box {
@@ -133,6 +142,41 @@ hr{
     border: none; 
     background-color: var(--white);
 }
+
+/* FORECAST INFO */
+
+
+#forecast {
+    display: flex;
+    justify-content: space-around;
+    gap: 20px;
+    padding: 20px;
+    width: 100%;
+}
+
+.forecast-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.forecast-day {
+    font-size: 18px;
+    color: white;
+}
+
+.forecast-icon {
+    width: 80px;
+    height: 80px;
+}
+
+.forecast-temp {
+    font-size: 24px;
+    color: white;
+    font-weight: bold;
+}
+
 
 /* Bottom div */
 .vs-container{
@@ -261,9 +305,61 @@ hr{
 /* MEDIA QUERIES */
 
 
-@media all and (max-width: 830px) {
+@media all and (max-width: 600px) {
     #display-info {
         justify-content: center;
         align-items: center; /* TODO */
+        flex-direction: column;
     }
 }
+
+@media all and (max-width: 700px) {
+    .weather-container {
+        border-radius: 0px;
+    }
+    #weather-button{
+        border-top-right-radius: 0px;
+    }
+}
+
+
+@media all and (max-width: 450px) {
+    .forecast-card {
+      gap:0px;
+
+    }
+    #forecast{
+        align-items: center;
+    }
+
+
+    .forecast-day {
+        font-size: 18px;
+        color: white;
+    }
+    
+    .forecast-icon {
+        width: 50px;
+        height: 50px;
+    }
+    
+    .forecast-temp {
+        font-size: 18px;
+        color: white;
+        font-weight: bold;
+    }
+    
+
+}
+
+
+@media all and (max-width: 550px) {
+    #forecast {
+      gap:0px;
+      padding:0px;
+      padding-top:10px;
+      padding-bottom: 10px;
+
+    }
+}
+
