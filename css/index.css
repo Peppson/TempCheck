@@ -22,7 +22,6 @@
     background-position: center;
 } */
 
-
 .weather-container,
 .compare-weather-container {
     width: 100%;
@@ -32,7 +31,7 @@
 }
 
 .weather-container {
-    border-radius: 20px;
+    border-radius: var(--border-radius);
     padding: 40px 50px 40px 50px;
     backdrop-filter: blur(var(--blur-medium));
     display: flex;
@@ -52,10 +51,10 @@
 input[type="text"]
 {
     width: 100%;
+    color: var(--white) !important;
 }
 
 #city-input {
-
     flex: 2;
     padding: 5px;
     padding-left: 20px;
@@ -69,7 +68,7 @@ input[type="text"]
 }
 
 #weather-button {
-    border-top-right-radius: 20px;
+    border-top-right-radius: var(--border-radius);
     background-color: rgba(0, 0, 0, 0);
     flex: 1;
     padding: 5px;
@@ -82,14 +81,13 @@ input[type="text"]
     font-size: 30px;
     color: var(--lightgrey);
     padding-top: 20px;
-    padding-bottom: 5x;
+    padding-bottom: 5px;
 }
 
 #weather-button:hover {
     cursor: pointer;
     color: var(--white);
-    background: linear-gradient(0deg, rgba(255, 255, 255, 0.5) 0%, rgba(255,226,0,0) 100%);
-
+    background: linear-gradient(0deg, rgba(255, 255, 255, 0.2) 0%, rgba(0,0,0,0) 100%);
 }
 
 #display-info {
@@ -195,6 +193,7 @@ hr{
 
 .toggle-buttons-container{
     display: flex;
+    padding-bottom: 10px;
 
 }
 .toggle-buttons{
@@ -206,10 +205,11 @@ hr{
     background: transparent;
 }
 .active-button{
-    background: linear-gradient(0deg, rgba(255, 255, 255, 0.5) 0%, rgba(255,226,0,0) 100%);
+    border-bottom: 3px solid var(--accent-color-light) !important;
 }
 .toggle-buttons:hover{
     cursor: pointer;
+    background: linear-gradient(0deg, rgba(255, 255, 255, 0.2) 0%, rgba(0,0,0,0) 100%);
 }
 
 
