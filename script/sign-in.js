@@ -9,7 +9,6 @@ function onUserLogin(event) {
         document.getElementById("userLogin").submit();
     }, 2000);
 
-    
     // Maybe save user name and display it like "Welcome back, Arif" on the other pages?
     // Call Api fetch here?
 }

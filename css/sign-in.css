@@ -52,6 +52,7 @@ main label {
     height: 600px;
     padding: 40px 50px 40px 50px;
     justify-content: center;
+    border-radius: var(--border-radius);
 }
 
 .sign-up-text {
