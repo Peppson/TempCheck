@@ -19,6 +19,7 @@ function fetchCurrentWeather({ city, latitude, longitude }) {
             document.getElementById("display-info").innerText = "Error retrieving weather data. Please try again.";
             console.error("Weather Error:", error);
         });
+    
 }
 
 /* FETCH FORECAST API */

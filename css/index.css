@@ -81,7 +81,6 @@ input[type="text"]
     border-bottom: 2px solid var(--white);
     font-size: 30px;
     color: var(--lightgrey);
-    padding-top: 20px;
     padding-bottom: 5x;
 }
 
@@ -103,8 +102,6 @@ input[type="text"]
     width: 100%;
     padding-bottom: 20px
 }
-
-
 
 .svg-animated{
     margin-top: -20px;
@@ -129,12 +126,13 @@ input[type="text"]
 }
 
 .temp-info {
-    font-size: 300px;
+    font-size: 250px;
     display: flex;
-    
+    margin-top: -20px;
 }
 
 .degree-icon{
+    padding-top: 20px;
     font-size: 100px;
     margin-left: -10px;
 }
@@ -181,9 +179,8 @@ hr{
 
 .forecast-section{
     display: flex;
-    justify-content: space-around;
-    gap: 20px;
-    padding: 20px;
+    justify-content: space-between;
+    padding-top: 20px;
     width: 100%;
 }
 
@@ -347,6 +344,10 @@ hr{
         align-items: center; /* TODO */
         flex-direction: column;
     }
+
+    .temp-info{
+        font-size: 200px;
+    }
 }
 
 @media all and (max-width: 800px) {
@@ -356,6 +357,9 @@ hr{
     }
     #weather-button{
         border-top-right-radius: 0px;
+    }
+    .top-section{
+        min-height: 100%;
     }
 }
 
@@ -397,10 +401,10 @@ hr{
 @media all and (max-width: 550px) {
   
     .forecast-section{
-        gap:0px;
       padding:0px;
       padding-top:10px;
       padding-bottom: 10px;
+      justify-content: space-evenly;
     }
 }
 
