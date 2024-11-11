@@ -23,7 +23,7 @@ function colorInputField(field) {
     }
 }
 
-// Color input fields border when not empty
+// Color input fields when not empty
 document.getElementById("username").addEventListener("input", function() {
     colorInputField(this);
 });
