@@ -2,376 +2,51 @@
 // Dark/Light mode toggle switch(s) 
 const toggleSwitches = document.querySelectorAll(".theme-toggle-button");
 
-/* FETCH CURRENT WEATHER API  */
-function fetchCurrentWeather({ city, latitude, longitude }) {
 
-    let weatherURL;
-    if (city) {
-        weatherURL = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=5d701d369d46aa133c404b3d2ec1d506&units=metric`;
-    } else if (latitude && longitude) {
-        weatherURL = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=5d701d369d46aa133c404b3d2ec1d506&units=metric`;
+//------------ Color Theme ------------//
+
+function windownOnLoad() {
+    const savedTheme = localStorage.getItem("theme");
+
+    if (savedTheme === "dark" || savedTheme === "light") {
+        setTheme(savedTheme, false);
+        return;
     }
-    /* GET CURRENT WEATHER INFO */
-    fetch(weatherURL)
-        .then((response) => response.json())
-        .then(data => {
-            displayWeatherData(data);
-            displayCurrentInfo(data);
-        })
-        .catch((error) => {
-            document.getElementById("display-info").innerText = "Error retrieving weather data. Please try again.";
-            console.error("Weather Error:", error);
-        });
+    // No theme found, default to "dark"
+    setTheme("dark");
 }
 
-/* FETCH FORECAST API */
-function fetchForecast({ city, latitude, longitude }) {
-
-    let forecastURL;
-    if (city) {
-        forecastURL = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=5d701d369d46aa133c404b3d2ec1d506&units=metric`;
-    } else if (latitude && longitude) {
-        forecastURL = `https://api.openweathermap.org/data/2.5/forecast?lat=${latitude}&lon=${longitude}&appid=5d701d369d46aa133c404b3d2ec1d506&units=metric`;
+function setTheme(theme, writeToStorage = true) {
+    if (writeToStorage) {
+        localStorage.setItem("theme", theme);
     }
-
-    /* GET FORECAST INFO */
-    fetch(forecastURL)
-        .then((response) => response.json())
-        .then(displayForecast)
-        .catch((error) => {
-            document.getElementById("forecast-info").innerText = "Error retrieving forecast data. Please try again.";
-            console.error("Forecast Error:", error);
-        });
+    setColorTheme(theme);
+    setThemeButtonState(theme);
+    setThemeIcon(theme);
 }
 
-/* BY USER INPUT */
-function WeatherData() {
-    const cityInputElement = document.getElementById('city-input');
-    const cityInput = cityInputElement.value;
+function setColorTheme(theme) {
+    const page = document.querySelector("body");
+    console.log("Theme: " + theme);
 
-    /* call the two API by user input */
-    fetchCurrentWeather({ city: cityInput });
-    fetchForecast({ city: cityInput });
-    cityInputElement.value = '';
+    if (theme === "light") {
+        page.classList.add("light-mode");
+    } else {
+        page.classList.remove("light-mode");
+    }
 }
 
-/* BY USER POSITION */
-function getWeatherAtPosition() {
-    navigator.geolocation.getCurrentPosition(
-        (position) => {
-            const { latitude, longitude } = position.coords;
-            /* call the two API by longitude and latidude. */
-            fetchCurrentWeather({ latitude, longitude });
-            fetchForecast({ latitude, longitude });
-        }
-    );
-}
-
-/* RUN WHEN STARTING PROGRAM */
-getWeatherAtPosition();
-
-/* PRINTING OUT THE CURRENT WEATHER DATA */
-function displayWeatherData(weatherData) {
-    const infoText = document.getElementById("display-info");
-    const iconCode = weatherData.weather[0].icon;
-    const temp = Math.round(weatherData.main.temp);
-    const iconPath = getSVGIcon(iconCode);
-    const today = new Date().toLocaleDateString('en-US', {
-        weekday: 'long',
-        month: 'short',
-        day: 'numeric'
-    });
-
-    infoText.innerHTML = `
-    <div class="icon-info">
-    <div>${weatherData.name}, ${weatherData.sys.country}</div>
-        <div class="today-date">${today}</div>
-        <img class="svg-animated" src="${iconPath}" width="250px" height="250px">
-        <div>${weatherData.weather[0].description}</div>
-    </div>
-    <div class="information-box">
-        <div class="temp-info">${temp}<span class="degree-icon">°</span></div>
-    </div>`;
-}
-
-/* PRINT OUT DAILY INFORMATION DATA */
-function displayCurrentInfo(weatherData) {
-    const container = document.getElementById('current-info');
-
-    container.innerHTML = '';
-    const rain = weatherData.rain ? weatherData.rain['1h'] : 0;
-
-    /* CONVERT UNIX TIME FOR SUNRISE AND SUNSET TO LOCAL TIMES RATHER THAN UTC */
-    const sunriseUTC = new Date(weatherData.sys.sunrise * 1000);
-    const sunsetUTC = new Date(weatherData.sys.sunset * 1000);
-    const timezone = weatherData.timezone;
-
-    const localSunrise = new Date(sunriseUTC.getTime() + timezone * 1000);
-    const localSunset = new Date(sunsetUTC.getTime() + timezone * 1000);
-    const sunrise = localSunrise.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
-    const sunset = localSunset.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+function setThemeButtonState(theme) {
+    const isLightTheme = (theme === "light");
     
-    const currentweatherDataContainer = document.createElement("div");
-    currentweatherDataContainer.classList.add("current-info-data");
-
-    currentweatherDataContainer.innerHTML = `
-            <div><span class="info-title">Min temp:</span> ${Math.round(weatherData.main.temp_min)}°C</div>
-            <div><span class="info-title">Max temp:</span> ${Math.round(weatherData.main.temp_max)}°C</div>
-            <div><span class="info-title">Humidity:</span> ${weatherData.main.humidity}%</div>
-            <div><span class="info-title">Wind speed:</span> ${weatherData.wind.speed} m/s</div>
-            <div><span class="info-title">Rain:</span> ${rain} mm</div>
-            <div><span class="info-title">Sunrise:</span> ${sunrise}</div>
-            <div><span class="info-title">Sunset:</span> ${sunset}</div>
-        `;
-    container.appendChild(currentweatherDataContainer);
+    // Sync both buttons (desktop + mobile header)
+    toggleSwitches.forEach(button => button.checked = isLightTheme);
 }
 
-/* PRINTING OUT THE FORECAST DATA */
-
-function displayForecast(data) {
-    const today = new Date().toLocaleDateString('en-US');
-    const hourlyForecastContainer = document.getElementById("hourly-forecast");
-    const dailyForecastContainer = document.getElementById("daily-forecast");
-
-    hourlyForecastContainer.innerHTML = "";
-    dailyForecastContainer.innerHTML = "";
-
-    displayHourlyForecast(data, hourlyForecastContainer);
-    displayDailyForecast(data, today, dailyForecastContainer);
-}
-
-/* DISPLAY HOURLY */
-function displayHourlyForecast(data, container) {
-    const hourlyForecasts = data.list.slice(0, 5);
-
-    hourlyForecasts.forEach((forecast) => {
-        const time = new Date(forecast.dt_txt).toLocaleTimeString('en-US', {
-            hour: '2-digit',
-            minute: '2-digit',
-            hour12: false
-        });
-        const temp = Math.round(forecast.main.temp);
-        const iconCode = forecast.weather[0].icon;
-        const iconPath = getSVGIcon(iconCode);
-
-        const forecastCard = document.createElement("div");
-        forecastCard.classList.add("forecast-card");
-
-        forecastCard.innerHTML = `
-            <div class="forecast-day">${time}</div>
-            <img class="forecast-icon" src="${iconPath}" alt="Weather Icon">
-            <div class="forecast-temp">${temp}°C</div>
-        `;
-
-        container.appendChild(forecastCard);
-    });
-}
-
-/* DISPLAY DAILY FORECAST */
-function displayDailyForecast(weatherData, today, container) {
-    const dailyForecasts = weatherData.list.filter(entry => {
-        const entryDate = new Date(entry.dt_txt).toLocaleDateString('en-US');
-        return entry.dt_txt.includes("12:00:00") && entryDate !== today;
-    })
-    dailyForecasts.forEach((forecast) => {
-        const dayOfWeek = new Date(forecast.dt_txt).toLocaleDateString('en-US', { weekday: 'short' });
-        const temp = Math.round(forecast.main.temp);
-        const iconCode = forecast.weather[0].icon;
-        const iconPath = getSVGIcon(iconCode);
-
-        const forecastCard = document.createElement("div");
-        forecastCard.classList.add("forecast-card");
-
-        forecastCard.innerHTML = `
-            <div class="forecast-day">${dayOfWeek}</div>
-            <img class="forecast-icon" src="${iconPath}" alt="Weather Icon">
-            <div class="forecast-temp">${temp}°C</div>
-        `;
-
-        container.appendChild(forecastCard);
-    });
-}
-
-/* SHOW/HIDE HOURLY FORECAST */
-function showHourlyForecast() {
-    const hourlyForecastContainer = document.getElementById("hourly-forecast");
-    const dailyForecastContainer = document.getElementById("daily-forecast");
-    const currentInfo = document.getElementById("current-info");
-
-    hourlyForecastContainer.style.display = "flex";
-    dailyForecastContainer.style.display = "none";
-    currentInfo.style.display = "none";
-
-    document.getElementById("show-hourly").classList.add("active-button");
-    document.getElementById("show-daily").classList.remove("active-button");
-    document.getElementById("show-info").classList.remove("active-button");
-}
-
-/* SHOW/HIDE DAILY FORECASTS */
-function showDailyForecast() {
-    const hourlyForecastContainer = document.getElementById("hourly-forecast");
-    const dailyForecastContainer = document.getElementById("daily-forecast");
-    const currentInfo = document.getElementById("current-info");
-
-    hourlyForecastContainer.style.display = "none";
-    dailyForecastContainer.style.display = "flex";
-    currentInfo.style.display = "none";
-
-    document.getElementById("show-daily").classList.add("active-button");
-    document.getElementById("show-hourly").classList.remove("active-button");
-    document.getElementById("show-info").classList.remove("active-button");
-}
-
-/* SHOW THE INFORMATION OF TODAY */
-function showTodaysInfo() {
-    const hourlyForecastContainer = document.getElementById("hourly-forecast");
-    const dailyForecastContainer = document.getElementById("daily-forecast");
-    const currentInfoContainer = document.getElementById("current-info");
-
-    hourlyForecastContainer.style.display = "none";
-    dailyForecastContainer.style.display = "none";
-    currentInfoContainer.style.display = "flex";
-
-    document.getElementById("show-daily").classList.remove("active-button");
-    document.getElementById("show-hourly").classList.remove("active-button");
-    document.getElementById("show-info").classList.add("active-button");
-}
-
-/* MATCHING THE ICON CODES WITH SVGs */
-function getSVGIcon(iconCode) {
-    let iconPath;
-    switch (iconCode) {
-        case '01d':
-            iconPath = 'icons/animated/day.svg';
-            break;
-        case '01n':
-            iconPath = 'icons/animated/night.svg';
-            break;
-        case '02d':
-            iconPath = 'icons/animated/cloudy-day-1.svg';
-            break;
-        case '02n':
-            iconPath = 'icons/animated/cloudy-night-1.svg';
-            break;
-        case '03d':
-            iconPath = 'icons/animated/cloudy-day-2.svg';
-            break;
-        case '03n':
-            iconPath = 'icons/animated/cloudy-night-2.svg';
-            break;
-        case '04d':
-            iconPath = 'icons/animated/cloudy-day-3.svg';
-            break;
-        case '04n':
-            iconPath = 'icons/animated/cloudy-night-3.svg';
-            break;
-        case '09d':
-            iconPath = 'icons/animated/rainy-1.svg';
-            break;
-        case '09n':
-            iconPath = 'icons/animated/rainy-4.svg';
-            break;
-        case '10d':
-            iconPath = 'icons/animated/rainy-2.svg';
-            break;
-        case '10n':
-            iconPath = 'icons/animated/rainy-5.svg';
-            break;
-        case '11d':
-        case '11n':
-            iconPath = 'icons/animated/thunder.svg';
-            break;
-        case '13d':
-            iconPath = 'icons/animated/snowy-1.svg';
-            break;
-        case '13n':
-            iconPath = 'icons/animated/snowy-5.svg';
-            break;
-        case '50d':
-        case '50n':
-            iconPath = 'icons/animated/cloudy.svg';
-            break;
-        default:
-            iconPath = 'icons/animated/cloudy.svg';
-            break;
-    }
-    return iconPath;
-}
-
-/* BOTTOM SECTION */
-
-function toggleDropdown(dropdownContentSelector) {
-    const dropdownContent = document.querySelector(dropdownContentSelector);
-    dropdownContent.style.display = dropdownContent.style.display === 'block' ? 'none' : 'block';
-
-    // Close dropdown
-    window.onclick = function (event) {
-        if (!event.target.matches('.dropdown-btn')) {
-            const dropdowns = document.querySelectorAll('.swe, .rwa');
-            dropdowns.forEach(function (dropdown) {
-                if (dropdown.style.display === 'block') {
-                    dropdown.style.display = 'none';
-                }
-            });
-        }
-    };
-}
-
-function weatherApi(city, win) {
-    let cityInput = city
-    fetch(`https://api.openweathermap.org/data/2.5/weather?q=${cityInput}&appid=5d701d369d46aa133c404b3d2ec1d506&units=metric`)
-        .then((response) => response.json())
-        .then((data) => { displayVs(data, win) })
-
-        .catch((error) => {
-            document.getElementById("display-info").innerText = "Enter a real city, dummy";
-            console.error("Error:", error);
-        });
-    console.log(city)
-}
-
-function displayVs(weatherData, win) {
-    const infoTextCollection = document.getElementsByClassName(`win-${win}`)[0];
-    const compareWindow = document.getElementsByClassName(`comp-info-${win}`)[0];
-    const iconCode = weatherData.weather[0].icon;
-    const temp = Math.round(weatherData.main.temp);
-    const feelsComp = Math.round(weatherData.main.feels_like);
-    const minComp = Math.round(weatherData.main.temp_min);
-    const maxComp = Math.round(weatherData.main.temp_max);
-    const humiComp = Math.round(weatherData.main.humidity);
-    const windComp = Math.round(weatherData.wind.speed);
-    const iconPath = getSVGIcon(iconCode);
-
-    infoTextCollection.classList.add(`move-${win}`);
-    setTimeout(function () {
-        infoTextCollection.innerHTML = `
-        <div class="vs-info">userLoginAnimation
-        <div class=city-info>${weatherData.name}, ${weatherData.sys.country}</div>
-        <img class="icon-img" src="${iconPath}">
-        </div>
-        <div class="vs-temp-info">${temp}°C</div>`;
-    }, 1000);
-    infoTextCollection.addEventListener('animationend', function handleAnimationEnd() {
-        infoTextCollection.classList.remove(`move-${win}`);
-
-        compareWindow.innerHTML = `
-        <div class="temp-comp">${temp}</div>
-        <div class="feels-comp">${feelsComp}</div>
-        <div class="min-comp">${minComp}</div>
-        <div class="max-comp">${maxComp}</div>
-        <div class="humidity-comp">${humiComp}</div>
-        <div class="wind-comp">${windComp}</div>
-        `
-
-    })
-}
-
-// Set theme icons. Params "light" || "dark"
 function setThemeIcon(theme) {
     const icons = document.querySelectorAll(".theme-icon");
 
     setTimeout(function () {
-
         for (const icon of icons) {
             if (theme === "light") {
                 icon.innerHTML = `<img src="icons/static/header-icon-sun.svg" alt="|">`;
@@ -383,6 +58,9 @@ function setThemeIcon(theme) {
         }
     }, 75);
 }
+
+
+//------------ Dropdown menu ------------//
 
 function toggleDropdownMenu() {
     const menu = document.getElementById("dropdown-menu");
@@ -399,21 +77,21 @@ function closeDropdownMenu() {
 }
 
 
-// On Theme-button press
+//------------ Event Listeners ------------//
+
+// On window load
+window.addEventListener("load", windownOnLoad);
+
+// On theme button press
 toggleSwitches.forEach((toggleSwitch) => {
     toggleSwitch.addEventListener("change", () => {
         const isLightTheme = toggleSwitch.checked;
 
         // Sync both buttons
-        toggleSwitches.forEach(switchElem => switchElem.checked = isLightTheme);
+        toggleSwitches.forEach(button => button.checked = isLightTheme);
 
-        if (isLightTheme) {
-            setThemeIcon("light");
-            console.log("light mode!");
-        } else {
-            setThemeIcon("dark");
-            console.log("dark mode!");
-        }
+        let theme = isLightTheme ? "light" : "dark"; 
+        setTheme(theme);
     });
 });
 
