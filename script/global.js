@@ -13,7 +13,6 @@ function windownOnLoad() {
         return;
     }
 
-    // No theme found, default to "dark"
     setTheme("dark");
 }
 
