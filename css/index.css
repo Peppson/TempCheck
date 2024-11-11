@@ -87,7 +87,7 @@ input[type="text"] {
 #weather-button:hover {
     cursor: pointer;
     color: var(--white);
-    background: linear-gradient(0deg, rgba(255, 255, 255, 0.2) 0%, rgba(0, 0, 0, 0) 100%);
+    background: var(--forecast-hover);
 }
 
 #display-info {
@@ -235,7 +235,7 @@ hr {
 
 .toggle-buttons:hover {
     cursor: pointer;
-    background: linear-gradient(0deg, rgba(255, 255, 255, 0.2) 0%, rgba(0, 0, 0, 0) 100%);
+    background: var(--forecast-hover);
 }
 
 

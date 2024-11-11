@@ -7,7 +7,7 @@ header, footer {
     padding-bottom: 10px;
     width: 100%;
     justify-content: space-between;
-    color: var(--white);
+    color: white;
 }
 
 footer {
@@ -85,6 +85,7 @@ footer p {
 
 .footer-icons {
     width: 30px;
+    filter: var(--footer-icons)
 }
 
 .page-link {
@@ -233,7 +234,7 @@ footer p {
     width: 26px;
     left: 4px;
     bottom: 4px;
-    background-color: var(--white);
+    background-color: white;
     -webkit-transition: .4s;
     transition: .4s;
 }

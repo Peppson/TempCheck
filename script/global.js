@@ -12,6 +12,7 @@ function windownOnLoad() {
         setTheme(savedTheme, false);
         return;
     }
+
     // No theme found, default to "dark"
     setTheme("dark");
 }
@@ -20,6 +21,7 @@ function setTheme(theme, writeToStorage = true) {
     if (writeToStorage) {
         localStorage.setItem("theme", theme);
     }
+    
     setColorTheme(theme);
     setThemeButtonState(theme);
     setThemeIcon(theme);
