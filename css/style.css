@@ -10,7 +10,15 @@
     --toggle-btn-dark: #2e2e2e;
     --toggle-btn-light: #ffa500;
     --window-background-color: rgba(0, 0, 0, 0.2);
+
+    /* ----- Gradients ----- */
     --forecast-hover: linear-gradient(0deg, rgba(255, 255, 255, 0.2) 0%, rgba(0, 0, 0, 0) 100%);
+    --dropdown-menu: linear-gradient(
+        to bottom, 
+        rgba(0, 0, 0, 0) 0%,
+        rgba(255, 255, 255, 0.01) 1%,
+        rgba(255, 255, 255, 0.5) 100%
+    );
 
     /* ----- Sizes ----- */
     --border-radius: 0px;
@@ -31,12 +39,20 @@
     --darkgrey: rgb(59, 59, 59);
     --accent-color: #e29300;
     --accent-color-light: #ffbb00;
-    --window-background-color: rgba(255, 255, 255, 0.98);
+    --window-background-color: rgba(255, 255, 255, 0.9);
+
+    /* ----- Gradients ----- */
     --forecast-hover: linear-gradient(180deg, rgba(255, 255, 255, 0) 10%, rgba(0, 0, 0, 0.1) 100%);
+    --dropdown-menu: linear-gradient(
+        to bottom, 
+        rgba(255, 255, 255, 0) 0%,
+        rgba(0, 0, 0, 0.001) 1%,
+        rgba(0, 0, 0, 0.9) 100%
+    );
 
     /* ----- Sizes ----- */
     --border-radius: 16px;
-    --blur-medium: 0px;
+    --blur-medium: 6px;
 
     /* ----- Img/svg ----- */
     --background-image: url("../images/background/background-light.jpg");
