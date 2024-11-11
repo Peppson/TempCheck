@@ -14,7 +14,10 @@ function fetchCurrentWeather({ city, latitude, longitude }) {
     /* GET CURRENT WEATHER INFO */
     fetch(weatherURL)
         .then((response) => response.json())
-        .then(displayWeatherData)
+        .then(data => {
+            displayWeatherData(data);
+            displayCurrentInfo(data);
+        })
         .catch((error) => {
             document.getElementById("display-info").innerText = "Error retrieving weather data. Please try again.";
             console.error("Weather Error:", error);
@@ -91,12 +94,45 @@ function displayWeatherData(weatherData) {
     </div>`;
 }
 
+/* PRINT OUT DAILY INFORMATION DATA */
+function displayCurrentInfo(weatherData) {
+    const container = document.getElementById('current-info');
+
+    container.innerHTML = '';
+    const rain = weatherData.rain ? weatherData.rain['1h'] : 0;
+
+    /* CONVERT UNIX TIME FOR SUNRISE AND SUNSET TO LOCAL TIMES RATHER THAN UTC */
+    const sunriseUTC = new Date(weatherData.sys.sunrise * 1000);
+    const sunsetUTC = new Date(weatherData.sys.sunset * 1000);
+    const timezone = weatherData.timezone;
+
+    const localSunrise = new Date(sunriseUTC.getTime() + timezone * 1000);
+    const localSunset = new Date(sunsetUTC.getTime() + timezone * 1000);
+    const sunrise = localSunrise.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+    const sunset = localSunset.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+    
+    const currentweatherDataContainer = document.createElement("div");
+    currentweatherDataContainer.classList.add("current-info-data");
+
+    currentweatherDataContainer.innerHTML = `
+            <div><span class="info-title">Min temp:</span> ${Math.round(weatherData.main.temp_min)}°C</div>
+            <div><span class="info-title">Max temp:</span> ${Math.round(weatherData.main.temp_max)}°C</div>
+            <div><span class="info-title">Humidity:</span> ${weatherData.main.humidity}%</div>
+            <div><span class="info-title">Wind speed:</span> ${weatherData.wind.speed} m/s</div>
+            <div><span class="info-title">Rain:</span> ${rain} mm</div>
+            <div><span class="info-title">Sunrise:</span> ${sunrise}</div>
+            <div><span class="info-title">Sunset:</span> ${sunset}</div>
+        `;
+    container.appendChild(currentweatherDataContainer);
+}
+
 /* PRINTING OUT THE FORECAST DATA */
 
 function displayForecast(data) {
     const today = new Date().toLocaleDateString('en-US');
     const hourlyForecastContainer = document.getElementById("hourly-forecast");
     const dailyForecastContainer = document.getElementById("daily-forecast");
+
     hourlyForecastContainer.innerHTML = "";
     dailyForecastContainer.innerHTML = "";
 
@@ -132,8 +168,8 @@ function displayHourlyForecast(data, container) {
 }
 
 /* DISPLAY DAILY FORECAST */
-function displayDailyForecast(data, today, container) {
-    const dailyForecasts = data.list.filter(entry => {
+function displayDailyForecast(weatherData, today, container) {
+    const dailyForecasts = weatherData.list.filter(entry => {
         const entryDate = new Date(entry.dt_txt).toLocaleDateString('en-US');
         return entry.dt_txt.includes("12:00:00") && entryDate !== today;
     })
@@ -160,24 +196,45 @@ function displayDailyForecast(data, today, container) {
 function showHourlyForecast() {
     const hourlyForecastContainer = document.getElementById("hourly-forecast");
     const dailyForecastContainer = document.getElementById("daily-forecast");
+    const currentInfo = document.getElementById("current-info");
 
     hourlyForecastContainer.style.display = "flex";
     dailyForecastContainer.style.display = "none";
+    currentInfo.style.display = "none";
 
     document.getElementById("show-hourly").classList.add("active-button");
     document.getElementById("show-daily").classList.remove("active-button");
+    document.getElementById("show-info").classList.remove("active-button");
 }
 
-// /* SHOW/HIDE DAILY FORECASTS */
+/* SHOW/HIDE DAILY FORECASTS */
 function showDailyForecast() {
     const hourlyForecastContainer = document.getElementById("hourly-forecast");
     const dailyForecastContainer = document.getElementById("daily-forecast");
+    const currentInfo = document.getElementById("current-info");
 
     hourlyForecastContainer.style.display = "none";
     dailyForecastContainer.style.display = "flex";
+    currentInfo.style.display = "none";
 
     document.getElementById("show-daily").classList.add("active-button");
     document.getElementById("show-hourly").classList.remove("active-button");
+    document.getElementById("show-info").classList.remove("active-button");
+}
+
+/* SHOW THE INFORMATION OF TODAY */
+function showTodaysInfo() {
+    const hourlyForecastContainer = document.getElementById("hourly-forecast");
+    const dailyForecastContainer = document.getElementById("daily-forecast");
+    const currentInfoContainer = document.getElementById("current-info");
+
+    hourlyForecastContainer.style.display = "none";
+    dailyForecastContainer.style.display = "none";
+    currentInfoContainer.style.display = "flex";
+
+    document.getElementById("show-daily").classList.remove("active-button");
+    document.getElementById("show-hourly").classList.remove("active-button");
+    document.getElementById("show-info").classList.add("active-button");
 }
 
 /* MATCHING THE ICON CODES WITH SVGs */
