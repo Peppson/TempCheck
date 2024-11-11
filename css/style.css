@@ -9,13 +9,32 @@
     --accent-color-light: rgb(56, 139, 218);
     --toggle-btn-dark: #47474b;
     --toggle-btn-light: #ffa500;
+    --window-background-color: rgba(0, 0, 0, 0.2);
 
     /* ----- Sizes ----- */
     --border-radius: 0px;
-    --blur-medium: 3px;
+    --blur-medium: 6px;
 
     /* ----- Image ----- */
     --background-image: url("../images/background/background-dark.jpg");
+}
+
+.light-mode {
+    /* ----- Colors ----- */
+    --white: #ffffff;
+    --lightgrey: #cecdd4;
+    --grey: #68686d;
+    --darkgrey: rgb(59, 59, 59);
+    --accent-color: #cc8500;
+    --accent-color-light: #ffa600;
+    --window-background-color: rgba(0, 0, 0, 0.3);
+
+    /* ----- Sizes ----- */
+    --border-radius: 24px;
+    --blur-medium: 6px;
+
+    /* ----- Image ----- */
+    --background-image: url("../images/background/background-light.jpg");
 }
 
 * {
@@ -77,7 +96,7 @@ a:visited {
 
 .transparent-blurred {
     backdrop-filter: blur(var(--blur-medium));
-    background-color: rgba(0, 0, 0, 0.2);
+    background-color: var(--window-background-color);
     border: 1px solid rgba(0, 0, 0, 0.05);
 }
 

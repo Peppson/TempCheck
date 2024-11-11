@@ -20,14 +20,20 @@ function setTheme(theme, writeToStorage = true) {
     if (writeToStorage) {
         localStorage.setItem("theme", theme);
     }
-
-    setColorTheme();
+    setColorTheme(theme);
     setThemeButtonState(theme);
     setThemeIcon(theme);
 }
 
-function setColorTheme() {
-    
+function setColorTheme(theme) {
+    const page = document.querySelector("body");
+    console.log("Theme: " + theme);
+
+    if (theme === "light") {
+        page.classList.add("light-mode");
+    } else {
+        page.classList.remove("light-mode");
+    }
 }
 
 function setThemeButtonState(theme) {

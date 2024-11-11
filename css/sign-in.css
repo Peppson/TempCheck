@@ -30,12 +30,12 @@ main label {
 
 .input-default {
     border-bottom: 2px solid var(--white) !important;
-    transition: border-color 0.8s ease;
+    transition: border-color 0.2s ease;
 }
 
 .input-filled {
     border-bottom: 2px solid var(--accent-color-light);
-    transition: border-color 0.8s ease;
+    transition: border-color 0.2s ease;
 }
 
 .sign-in-page {
