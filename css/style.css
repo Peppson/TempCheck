@@ -7,34 +7,42 @@
     --darkgrey: rgb(59, 59, 59);
     --accent-color: rgb(36, 88, 138);
     --accent-color-light: rgb(56, 139, 218);
-    --toggle-btn-dark: #47474b;
+    --toggle-btn-dark: #2e2e2e;
     --toggle-btn-light: #ffa500;
     --window-background-color: rgba(0, 0, 0, 0.2);
+    --forecast-hover: linear-gradient(0deg, rgba(255, 255, 255, 0.2) 0%, rgba(0, 0, 0, 0) 100%);
 
     /* ----- Sizes ----- */
     --border-radius: 0px;
     --blur-medium: 6px;
 
-    /* ----- Image ----- */
+    /* ----- Img/svg ----- */
     --background-image: url("../images/background/background-dark.jpg");
+    --username-icon: url("../icons/static/sign-in-username.svg");
+    --password-icon: url("../icons/static/sign-in-password.svg");
+    --footer-icons: invert(0);
 }
 
 .light-mode {
     /* ----- Colors ----- */
-    --white: #ffffff;
-    --lightgrey: #cecdd4;
+    --white: #313131;
+    --lightgrey: #383838;
     --grey: #68686d;
     --darkgrey: rgb(59, 59, 59);
-    --accent-color: #cc8500;
-    --accent-color-light: #ffa600;
-    --window-background-color: rgba(0, 0, 0, 0.3);
+    --accent-color: #e29300;
+    --accent-color-light: #ffbb00;
+    --window-background-color: rgba(255, 255, 255, 0.98);
+    --forecast-hover: linear-gradient(180deg, rgba(255, 255, 255, 0) 10%, rgba(0, 0, 0, 0.1) 100%);
 
     /* ----- Sizes ----- */
-    --border-radius: 24px;
-    --blur-medium: 6px;
+    --border-radius: 16px;
+    --blur-medium: 0px;
 
-    /* ----- Image ----- */
+    /* ----- Img/svg ----- */
     --background-image: url("../images/background/background-light.jpg");
+    --username-icon: url("../icons/static/sign-in-username-dark.svg");
+    --password-icon: url("../icons/static/sign-in-password-dark.svg");
+    --footer-icons: invert(1); 
 }
 
 * {
@@ -68,10 +76,6 @@ a:visited {
     background-repeat: no-repeat;
     background-size: cover;
     z-index: -1;
-}
-
-.debug {
-    background-color: rgb(226, 121, 23);
 }
 
 .hidden {

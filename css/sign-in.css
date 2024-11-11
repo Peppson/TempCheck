@@ -72,6 +72,8 @@ main label {
     position: absolute;
     right: 10px;
     top: 50%;
+    width: 28px;
+    height: 28px;
     transform: translateY(-50%);
     pointer-events: none;
 }
@@ -100,10 +102,22 @@ main label {
     height: 84px;
 }
 
+#submit-button {
+    color: white;
+}
+
 #forgot-password {
     padding-top: 10px;
     color: var(--lightgrey);
     cursor: default;
+}
+
+#username-icon {
+    background-image: var(--username-icon);
+}
+
+#password-icon {
+    background-image: var(--password-icon);
 }
 
 /* Sign in animation */
