@@ -1,32 +1,46 @@
 
+// Dark/Light mode toggle switch(s) 
+const toggleSwitches = document.querySelectorAll(".theme-toggle-button");
 
 
+//------------ Color Theme ------------//
 
+function windownOnLoad() {
+    const savedTheme = localStorage.getItem("theme");
 
-
-function setCurrentTheme(theme) {
-
-    /* document.documentElement.setAttribute("data-theme", theme); // Apply theme to the document
-
-    localStorage.setItem("theme", theme); // Store theme in local storage */
+    if (savedTheme === "dark" || savedTheme === "light") {
+        setTheme(savedTheme, false);
+        return;
+    }
+    // No theme found, default to "dark"
+    setTheme("dark");
 }
 
+function setTheme(theme, writeToStorage = true) {
+    if (writeToStorage) {
+        localStorage.setItem("theme", theme);
+    }
 
-
-
-function setThemeOnLoad() {
-    /* const savedTheme = localStorage.getItem("theme"); */ 
-
+    setColorTheme();
+    setThemeButtonState(theme);
+    setThemeIcon(theme);
 }
 
+function setColorTheme() {
+    
+}
 
+function setThemeButtonState(theme) {
+    const isLightTheme = (theme === "light");
+    
+    // Sync both buttons (desktop + mobile header)
+    toggleSwitches.forEach(button => button.checked = isLightTheme);
+}
 
-// Set theme icons. Params "light" || "dark"
 function setThemeIcon(theme) {
     const icons = document.querySelectorAll(".theme-icon");
 
     setTimeout(function () {
-
         for (const icon of icons) {
             if (theme === "light") {
                 icon.innerHTML = `<img src="icons/static/header-icon-sun.svg" alt="|">`;
@@ -40,45 +54,7 @@ function setThemeIcon(theme) {
 }
 
 
-
-
-
-
-/* // On Theme-button press
-toggleSwitches.forEach((toggleSwitch) => {
-    toggleSwitch.addEventListener("change", () => {
-        const isLightTheme = toggleSwitch.checked;
-
-        // Sync both buttons
-        toggleSwitches.forEach(switchElem => switchElem.checked = isLightTheme);
-
-        if (isLightTheme) {
-            setThemeIcon("light");
-            console.log("light mode!");
-        } else {
-            setThemeIcon("dark");
-            console.log("dark mode!");
-        }
-    });
-}); */
-
-
-// Retreive saved theme and apply
-window.addEventListener("load", setThemeOnLoad);
-
-
-
-
-
-
-
-
-
-// Dark/Light mode toggle switch(s) 
-const toggleSwitches = document.querySelectorAll(".theme-toggle-button");
-
-
-
+//------------ Dropdown menu ------------//
 
 function toggleDropdownMenu() {
     const menu = document.getElementById("dropdown-menu");
@@ -94,6 +70,24 @@ function closeDropdownMenu() {
     menu.style.display = "none";
 }
 
+
+//------------ Event Listeners ------------//
+
+// On window load
+window.addEventListener("load", windownOnLoad);
+
+// On theme button press
+toggleSwitches.forEach((toggleSwitch) => {
+    toggleSwitch.addEventListener("change", () => {
+        const isLightTheme = toggleSwitch.checked;
+
+        // Sync both buttons
+        toggleSwitches.forEach(button => button.checked = isLightTheme);
+
+        let theme = isLightTheme ? "light" : "dark"; 
+        setTheme(theme);
+    });
+});
 
 // Close dropdown menu on window resize
 window.addEventListener('resize', () => {
