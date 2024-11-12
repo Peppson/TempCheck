@@ -28,3 +28,18 @@ document.getElementById("username").addEventListener("input", function() {
 document.getElementById("password").addEventListener("input", function() {
     colorInputField(this);
 });
+
+/* GEOLOCATION */
+
+function getLocation() {
+    navigator.geolocation.getCurrentPosition(
+        (position) => {
+            const { latitude, longitude } = position.coords;
+           /* SAVE TO STORAGE */
+            sessionStorage.setItem('latitude', latitude);
+            sessionStorage.setItem('longitude', longitude);
+        }
+    );
+}
+
+getLocation();
