@@ -7,7 +7,7 @@ header, footer {
     padding-bottom: 10px;
     width: 100%;
     justify-content: space-between;
-    color: var(--white);
+    color: white;
 }
 
 footer {
@@ -85,6 +85,7 @@ footer p {
 
 .footer-icons {
     width: 30px;
+    filter: var(--footer-icons)
 }
 
 .page-link {
@@ -114,12 +115,7 @@ footer p {
 
 .transparent-gradiant-menu {
     backdrop-filter: blur(var(--blur-medium));
-    background: linear-gradient(
-        to bottom, 
-        rgba(0, 0, 0, 0) 0%,
-        rgba(255, 255, 255, 0.01) 1%,
-        rgba(255, 255, 255, 0.5) 100%
-    );
+    background: var(--dropdown-menu);
 }
 
 #box-forecast {
@@ -233,7 +229,7 @@ footer p {
     width: 26px;
     left: 4px;
     bottom: 4px;
-    background-color: var(--white);
+    background-color: white;
     -webkit-transition: .4s;
     transition: .4s;
 }

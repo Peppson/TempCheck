@@ -30,12 +30,12 @@ main label {
 
 .input-default {
     border-bottom: 2px solid var(--white) !important;
-    transition: border-color 0.8s ease;
+    transition: border-color 0.2s ease;
 }
 
 .input-filled {
     border-bottom: 2px solid var(--accent-color-light);
-    transition: border-color 0.8s ease;
+    transition: border-color 0.2s ease;
 }
 
 .sign-in-page {
@@ -52,6 +52,7 @@ main label {
     height: 600px;
     padding: 40px 50px 40px 50px;
     justify-content: center;
+    border-radius: var(--border-radius);
 }
 
 .sign-up-text {
@@ -71,6 +72,8 @@ main label {
     position: absolute;
     right: 10px;
     top: 50%;
+    width: 28px;
+    height: 28px;
     transform: translateY(-50%);
     pointer-events: none;
 }
@@ -99,10 +102,22 @@ main label {
     height: 84px;
 }
 
+#submit-button {
+    color: white;
+}
+
 #forgot-password {
     padding-top: 10px;
     color: var(--lightgrey);
     cursor: default;
+}
+
+#username-icon {
+    background-image: var(--username-icon);
+}
+
+#password-icon {
+    background-image: var(--password-icon);
 }
 
 /* Sign in animation */

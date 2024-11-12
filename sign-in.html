@@ -7,6 +7,7 @@
     <title>Temp°Check</title>
     <script src="./script/global.js" defer></script>
     <script src="./script/sign-in.js" defer></script>
+    <link rel="prefetch" href="../images/background/background-light.jpg" as="image">
     <link rel="icon" href="./icons/static/cloudy-day-1.svg">
     <link rel="stylesheet" href="./css/style.css">
     <link rel="stylesheet" href="./css/sign-in.css">
@@ -63,6 +64,7 @@
             <div class="sign-up-text">
                 <h1 class="text-center text-no-wrap no-select">Sign in</h1>
             </div>
+            <!-- <form id="userLogin" onsubmit="onUserLogin(event)">  -->
             <form id="userLogin" action="index.html" onsubmit="onUserLogin(event)">
                 <div class="form-elements">
                     <label class="no-select" for="username">Name</label>
@@ -75,7 +77,7 @@
                         minlength="3" 
                         autocomplete="off" 
                         required>
-                    <img class="input-icon no-select" src="icons/static/sign-in-username.svg" alt="|">
+                    <span id="username-icon" class="input-icon no-select"></span>
                 </div>
                 <div class="form-elements">
                     <label class="no-select" for="password">Password</label>
@@ -88,7 +90,7 @@
                         minlength="3" 
                         autocomplete="off" 
                         required>
-                    <img class="input-icon no-select" src="icons/static/sign-in-password.svg" alt="|">
+                    <span id="password-icon" class="input-icon no-select"></span>
                 </div>
                 <div id="button-container">
                     <input id="submit-button" type="submit" value="Sign in" class="box-shadow">
@@ -98,7 +100,7 @@
         </section>
     </main>
 
-    <footer class="transparent-blurred box-shadow">
+    <footer class="transparent-blurred">
         <div>
             <ul> 
                 <li><a href="https://www.youtube.com/watch?v=xvFZjo5PgG0" target="_blank" rel="noopener noreferrer">

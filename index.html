@@ -6,10 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Temp°Check</title>
     <script src="./script/global.js" defer></script>
+    <script src="./script/forecast.js" defer></script>
     <link rel="icon" href="./icons/static/cloudy-day-1.svg">
     <link rel="stylesheet" href="./css/index.css">
     <link rel="stylesheet" href="./css/style.css">
     <link rel="stylesheet" href="./css/header-footer.css">
+    <link rel="prefetch" href="../images/background/background-light.jpg" as="image">
 </head>
 
 <body>
@@ -96,7 +98,7 @@
             </div>
         </div>
     </nav>
-
+    <!-- THE MAIN PAGE -->
     <main class="main-page">
 
         <div class="top-section">
@@ -105,12 +107,7 @@
 
                 <div class="input-field">
 
-                    <input
-                        type="text" 
-                        id="city-input" 
-                        maxlength="25" 
-                        minlength="2" 
-                        autocomplete="off"
+                    <input type="text" id="city-input" maxlength="25" minlength="2" autocomplete="off"
                         placeholder="Location">
                     <button id="weather-button" onclick="WeatherData()">Search</button>
 
@@ -120,16 +117,16 @@
 
                 <div class="toggle-buttons-container">
 
-                    <button id="show-hourly" class="toggle-buttons active-button" onclick="showHourlyForecast()">Hourly</button>
-
+                    <button id="show-hourly" class="toggle-buttons active-button"
+                        onclick="showHourlyForecast()">Hourly</button>
                     <button id="show-daily" class="toggle-buttons" onclick="showDailyForecast()">Daily</button>
-                </div>
+                    <button id="show-info" class="toggle-buttons" onclick="showTodaysInfo()">Info</button>
 
-                <!-- <hr> -->
+                </div>
 
                 <div id="hourly-forecast" class="forecast-section" style="display: flex;"></div>
                 <div id="daily-forecast" class="forecast-section" style="display: none;"></div>
-                <!-- <div id="forecast-info"></div> -->
+                <div id="current-info" class="forecast-section" style="display: none;"></div>
 
             </div>
 

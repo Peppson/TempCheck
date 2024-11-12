@@ -8,10 +8,6 @@ function onUserLogin(event) {
     setTimeout(function() {
         document.getElementById("userLogin").submit();
     }, 2000);
-
-    
-    // Maybe save user name and display it like "Welcome back, Arif" on the other pages?
-    // Call Api fetch here?
 }
 
 function colorInputField(field) {
@@ -24,7 +20,7 @@ function colorInputField(field) {
     }
 }
 
-// Color input fields border when not empty
+// Color input fields when not empty
 document.getElementById("username").addEventListener("input", function() {
     colorInputField(this);
 });
