@@ -110,7 +110,6 @@ main label {
 #forgot-password {
     padding-top: 10px;
     color: var(--lightgrey);
-    cursor: default;
 }
 
 #username-icon {
