@@ -274,7 +274,7 @@ hr {
 
     .forecast-day {
         font-size: 18px;
-        color: white;
+        color: var(--white);
     }
     .forecast-icon {
         width: 50px;
@@ -282,7 +282,7 @@ hr {
     }
     .forecast-temp {
         font-size: 18px;
-        color: white;
+        color: var(--white);
         font-weight: bold;
     }
 }
