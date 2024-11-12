@@ -226,6 +226,10 @@
     .compare-weather-container {
         max-width: 420px;
         min-height: 200px;
+        width: 100%;
+        max-width: 800px;
+        min-height: 500px;
+        background-color: var(--window-background-color);
     }
     .win-one,
     .win-two,

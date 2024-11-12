@@ -22,12 +22,12 @@
     background-position: center;
 } */
 
-.weather-container,
-.compare-weather-container {
+.weather-container {
     width: 100%;
     background-color: var(--window-background-color);
     max-width: 800px;
     min-height: 500px;
+    border-radius: var(--border-radius);
 }
 
 .weather-container {
@@ -89,8 +89,8 @@ input[type="text"] {
 
 #weather-button:hover {
     cursor: pointer;
+    background: var(--forecast-button);
     color: var(--white);
-    background: var(--forecast-hover);
 }
 
 #display-info {
@@ -310,7 +310,6 @@ hr {
     .current-info-data {
         flex-direction: column;
     }
-}
 
     .forecast-section {
         padding: 0px;
@@ -318,5 +317,4 @@ hr {
         padding-bottom: 10px;
         justify-content: space-evenly;
     }
-
 }

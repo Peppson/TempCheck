@@ -5,14 +5,15 @@
     --lightgrey: #cecdd4;
     --grey: #68686d;
     --darkgrey: rgb(59, 59, 59);
-    --accent-color: rgb(36, 88, 138);
+    --accent-color: rgb(39, 96, 150);
     --accent-color-light: rgb(56, 139, 218);
     --toggle-btn-dark: #2e2e2e;
     --toggle-btn-light: #ffa500;
     --window-background-color: rgba(0, 0, 0, 0.2);
-
+    --forecast-hover: var(--accent-color-light); 
+    
     /* ----- Gradients ----- */
-    --forecast-hover: linear-gradient(0deg, rgba(255, 255, 255, 0.2) 0%, rgba(0, 0, 0, 0) 100%);
+    --forecast-button: linear-gradient(0deg, rgba(255, 255, 255, 0.2) 0%, rgba(0, 0, 0, 0) 100%);
     --dropdown-menu: linear-gradient(
         to bottom, 
         rgba(0, 0, 0, 0) 0%,
@@ -40,10 +41,11 @@
     --accent-color: #e29300;
     --accent-color-light: #ffbb00;
     --window-background-color: rgba(255, 255, 255, 0.9);
+    --forecast-hover: var(--accent-color-light);
+    --forecast-button: var(--accent-color-light);
 
     /* ----- Gradients ----- */
-    --forecast-hover: var(--accent-color-light);
-     --dropdown-menu: linear-gradient(
+    --dropdown-menu: linear-gradient(
         to bottom, 
         rgba(255, 255, 255, 0) 0%,
         rgba(0, 0, 0, 0.001) 1%,
