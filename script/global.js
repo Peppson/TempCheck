@@ -270,12 +270,28 @@ function weatherApi(city, win) {
             document.getElementById("display-info").innerText = "Enter a real city, dummy";
             console.error("Error:", error);
         });
-    console.log(city)
+}
+
+
+function weatherApiHelper(win){
+    const valueInput = document.getElementsByClassName('input-search')[0].value;
+    weatherApi(valueInput, win)
+
+}
+
+function search(win){
+    const onclickSearch = document.getElementsByClassName(`win-${win}`)[0];
+
+    onclickSearch.innerHTML = `
+    <div class="input-align">
+        <input class="input-search" type="text" placeholder="Location">
+        <button class="search-style" onclick="weatherApiHelper('${win}')">Search</button>
+    </div>
+    `
 }
 
 function displayVs(weatherData, win) {
     const infoTextCollection = document.getElementsByClassName(`win-${win}`)[0];
-    const compareWindow = document.getElementsByClassName(`comp-info-${win}`)[0];
     const iconCode = weatherData.weather[0].icon;
     const temp = Math.round(weatherData.main.temp);
     const feelsComp = Math.round(weatherData.main.feels_like);
@@ -285,26 +301,36 @@ function displayVs(weatherData, win) {
     const windComp = Math.round(weatherData.wind.speed);
     const iconPath = getSVGIcon(iconCode);
 
+    const tempDiv = document.getElementsByClassName(`temp-comp-${win}`)[0];
+    const feelsDiv = document.getElementsByClassName(`feels-comp-${win}`)[0];
+    const minDiv = document.getElementsByClassName(`min-comp-${win}`)[0];
+    const maxDiv = document.getElementsByClassName(`max-comp-${win}`)[0];
+    const humDiv = document.getElementsByClassName(`humidity-comp-${win}`)[0];
+    const windDiv = document.getElementsByClassName(`wind-comp-${win}`)[0];
+
+
     infoTextCollection.classList.add(`move-${win}`);
     setTimeout(function () {
         infoTextCollection.innerHTML = `
-        <div class="vs-info">userLoginAnimation
-        <div class=city-info>${weatherData.name}, ${weatherData.sys.country}</div>
-        <img class="icon-img" src="${iconPath}">
-        </div>
-        <div class="vs-temp-info">${temp}°C</div>`;
+        <button class="search-button-one" onclick="search('one')">
+            <div class="vs-info">
+            <div class=city-info>${weatherData.name}, ${weatherData.sys.country}</div>
+            <img class="icon-img" src="${iconPath}">
+            </div>
+            <div class="vs-temp-info">${temp}°C</div>
+        </button>
+            `;
     }, 1000);
     infoTextCollection.addEventListener('animationend', function handleAnimationEnd() {
         infoTextCollection.classList.remove(`move-${win}`);
 
-        compareWindow.innerHTML = `
-        <div class="temp-comp">${temp}</div>
-        <div class="feels-comp">${feelsComp}</div>
-        <div class="min-comp">${minComp}</div>
-        <div class="max-comp">${maxComp}</div>
-        <div class="humidity-comp">${humiComp}</div>
-        <div class="wind-comp">${windComp}</div>
-        `
+        tempDiv.innerHTML = temp;
+        feelsDiv.innerHTML = feelsComp;
+        minDiv.innerHTML = minComp;
+        maxDiv.innerHTML = maxComp;
+        humDiv.innerHTML = humiComp;
+        windDiv.innerHTML = windComp;
+
 
     })
 }
