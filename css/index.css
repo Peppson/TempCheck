@@ -37,6 +37,9 @@
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
+    margin-bottom: 70px;
+    margin-left: 10px;
+    margin-right: 10px;
 }
 
 .weather-container h2 {
@@ -406,7 +409,7 @@ hr {
 
 @media all and (max-width: 800px) {
     .weather-container {
-        border-radius: 0px;
+        /* border-radius: 0px; */
         padding: 20px;
     }
 
@@ -420,7 +423,7 @@ hr {
 }
 
 
-@media all and (max-width: 450px) {
+@media all and (max-width: 480px) {
     .weather-container {
         border-radius: 0px;
         padding: 0px;
@@ -434,7 +437,6 @@ hr {
     #forecast {
         align-items: center;
     }
-
 
     .forecast-day {
         font-size: 18px;
@@ -451,11 +453,14 @@ hr {
         color: white;
         font-weight: bold;
     }
-
-
 }
 
-@media all and (max-width: 550px) {
+@media all and (max-width: 600px) {
+    .weather-container {
+        margin-left: 0px;
+        margin-right: 0px;
+    }
+
     .current-info-data {
         flex-direction: column;
     }

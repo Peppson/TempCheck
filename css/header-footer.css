@@ -10,8 +10,13 @@ header, footer {
     color: white;
 }
 
+header {
+    margin-bottom: 10px;
+}
+
 footer {
     height: 80px;
+    
 }
 
 header a ,
@@ -197,6 +202,16 @@ footer p {
 
 
 /*----- Theme toggle button -----*/ 
+.slider-animation {
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+
+.slider-animation:before {
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+
 .switch {
     position: relative;
     display: inline-block;
@@ -218,8 +233,6 @@ footer p {
     right: 0;
     bottom: 0;
     background-color: var(--toggle-btn-dark);
-    -webkit-transition: .4s;
-    transition: .4s;
 }
 
 .slider:before {
@@ -230,8 +243,6 @@ footer p {
     left: 4px;
     bottom: 4px;
     background-color: white;
-    -webkit-transition: .4s;
-    transition: .4s;
 }
 
 input:checked+.slider {
