@@ -1,8 +1,11 @@
+
 .top-section {
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 100vh;
+    min-height: 100%;
+    padding-top: 50px;
+    padding-bottom: 50px;
 }
 
 .bottom-section {
@@ -23,20 +26,16 @@
 } */
 
 .weather-container {
-    width: 100%;
-    background-color: var(--window-background-color);
-    max-width: 800px;
-    min-height: 500px;
-    border-radius: var(--border-radius);
-}
-
-.weather-container {
-    border-radius: var(--border-radius);
-    padding: 40px 50px 40px 50px;
-    backdrop-filter: blur(var(--blur-medium));
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
+    width: 100%;
+    max-width: 800px;
+    min-height: 500px;
+    padding: 40px 50px 40px 50px;
+    border-radius: var(--border-radius);
+    background-color: var(--window-background-color);
+    backdrop-filter: blur(var(--blur-medium));
     margin-bottom: 70px;
     margin-left: 10px;
     margin-right: 10px;
