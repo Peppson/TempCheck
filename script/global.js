@@ -1,6 +1,9 @@
 
 // Dark/Light mode toggle switch(s) 
 const toggleSwitches = document.querySelectorAll(".theme-toggle-button");
+const toggleSlider = document.querySelectorAll(".slider");
+const toggleIcon = document.querySelectorAll(".theme-icon");
+
 
 
 //------------ Color Theme ------------//
@@ -13,17 +16,15 @@ function windownOnLoad() {
         return;
     }
 
-    setTheme("dark");
+    setTheme("dark", false);
 }
 
-function setTheme(theme, writeToStorage = true) {
-    if (writeToStorage) {
-        localStorage.setItem("theme", theme);
-    }
+function setTheme(theme, btnAnimation = true) {
+    localStorage.setItem("theme", theme);
     
     setColorTheme(theme);
-    setThemeButtonState(theme);
-    setThemeIcon(theme);
+    setThemeButtonState(theme, btnAnimation);
+    setThemeIcon(theme, btnAnimation);
 }
 
 function setColorTheme(theme) {
@@ -37,28 +38,42 @@ function setColorTheme(theme) {
     }
 }
 
-function setThemeButtonState(theme) {
+function setThemeButtonState(theme, btnAnimation) {
     const isLightTheme = (theme === "light");
+
+    if (btnAnimation) {
+        toggleSlider.forEach(button => {
+            button.classList.add("slider-animation");
+        });
+    }
     
     // Sync both buttons (desktop + mobile header)
-    toggleSwitches.forEach(button => button.checked = isLightTheme);
+    toggleSlider.forEach(slider => { slider.checked = isLightTheme; });
+    toggleSwitches.forEach(button => { button.checked = isLightTheme; });
 }
 
-function setThemeIcon(theme) {
-    const icons = document.querySelectorAll(".theme-icon");
+function setThemeIcon(theme, btnAnimation) {
+    if (btnAnimation) {
+        setTimeout(function () {
+            changeThemeIcon(theme);
+        }, 75);
+    } else {
+        changeThemeIcon(theme);
+    }
+}
 
-    setTimeout(function () {
-        for (const icon of icons) {
-            if (theme === "light") {
-                icon.innerHTML = `<img src="icons/static/header-icon-sun.svg" alt="|">`;
-            } else if (theme === "dark") {
-                icon.innerHTML = `<img src="icons/static/header-icon-dark.svg" alt="|">`;
-            } else {
-                alert("Error! in setThemeIcon()");
-            }
+function changeThemeIcon(theme) {
+    for (const icon of toggleIcon) {
+        if (theme === "light") {
+            icon.innerHTML = `<img src="icons/static/header-icon-sun.svg" alt="|">`;
+        } else if (theme === "dark") {
+            icon.innerHTML = `<img src="icons/static/header-icon-dark.svg" alt="|">`;
+        } else {
+            alert("Error! in setThemeIcon()");
         }
-    }, 75);
+    }
 }
+
 
 
 //------------ Dropdown menu ------------//
