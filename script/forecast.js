@@ -1,4 +1,16 @@
 
+/* LOAD SESSION STORAGE */
+
+function LoadSessionStorage() {
+    const latitude = sessionStorage.getItem('latitude');
+    const longitude = sessionStorage.getItem('longitude');
+
+    fetchCurrentWeather({ latitude, longitude });
+    fetchForecast({ latitude, longitude });
+}
+
+LoadSessionStorage();
+
 /* FETCH CURRENT WEATHER API  */
 function fetchCurrentWeather({ city, latitude, longitude }) {
 
@@ -52,21 +64,6 @@ function WeatherData() {
     cityInputElement.value = '';
 }
 
-/* BY USER POSITION */
-function getWeatherAtPosition() {
-    navigator.geolocation.getCurrentPosition(
-        (position) => {
-            const { latitude, longitude } = position.coords;
-            /* call the two API by longitude and latidude. */
-            fetchCurrentWeather({ latitude, longitude });
-            fetchForecast({ latitude, longitude });
-        }
-    );
-}
-
-/* RUN WHEN STARTING PROGRAM */
-getWeatherAtPosition();
-
 /* PRINTING OUT THE CURRENT WEATHER DATA */
 function displayWeatherData(weatherData) {
     const infoText = document.getElementById("display-info");
@@ -107,7 +104,7 @@ function displayCurrentInfo(weatherData) {
     const localSunset = new Date(sunsetUTC.getTime() + timezone * 1000);
     const sunrise = localSunrise.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
     const sunset = localSunset.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
-    
+
     const currentweatherDataContainer = document.createElement("div");
     currentweatherDataContainer.classList.add("current-info-data");
 
