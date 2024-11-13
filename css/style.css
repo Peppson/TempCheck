@@ -1,14 +1,13 @@
 
-:root {
+.dark-mode {
     /* ----- Colors ----- */
-    --white: #ffffff;
+    --white: #ffffff;   
     --lightgrey: #cecdd4;
     --grey: #68686d;
     --darkgrey: rgb(59, 59, 59);
     --accent-color: rgb(39, 96, 150);
     --accent-color-light: rgb(56, 139, 218);
     --toggle-btn-dark: #2e2e2e;
-    --toggle-btn-light: #ffa500;
     --window-background-color: rgba(0, 0, 0, 0.2);
     --forecast-hover: var(--accent-color-light); 
     
@@ -20,18 +19,19 @@
         rgba(255, 255, 255, 0.01) 1%,
         rgba(255, 255, 255, 0.5) 100%
     );
-
+        
     /* ----- Sizes ----- */
     --border-radius: 0px;
     --blur-medium: 6px;
-
+    
     /* ----- Img/svg ----- */
     --background-image: url("../images/background/background-dark.jpg");
     --username-icon: url("../icons/static/sign-in-username.svg");
     --password-icon: url("../icons/static/sign-in-password.svg");
+    --header-switch-icon: url("../icons/static/header-icon-dark.svg");
     --footer-icons: invert(0);
-}
-
+    }
+    
 .light-mode {
     /* ----- Colors ----- */
     --white: #313131;
@@ -40,6 +40,7 @@
     --darkgrey: rgb(59, 59, 59);
     --accent-color: #e29300;
     --accent-color-light: #ffbb00;
+    --toggle-btn-light: #ffa500;
     --window-background-color: rgba(255, 255, 255, 0.9);
     --forecast-hover: var(--accent-color-light);
     --forecast-button: var(--accent-color-light);
@@ -60,6 +61,7 @@
     --background-image: url("../images/background/background-light.jpg");
     --username-icon: url("../icons/static/sign-in-username-dark.svg");
     --password-icon: url("../icons/static/sign-in-password-dark.svg");
+    --header-switch-icon: url("../icons/static/header-icon-sun.svg");
     --footer-icons: invert(1); 
 }
 

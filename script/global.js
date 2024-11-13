@@ -24,16 +24,16 @@ function setTheme(theme, btnAnimation = true) {
     
     setColorTheme(theme);
     setThemeButtonState(theme, btnAnimation);
-    setThemeIcon(theme, btnAnimation);
 }
 
 function setColorTheme(theme) {
     const page = document.querySelector("body");
-    console.log("Theme: " + theme);
-
+    
     if (theme === "light") {
         page.classList.add("light-mode");
+        page.classList.remove("dark-mode");
     } else {
+        page.classList.add("dark-mode");
         page.classList.remove("light-mode");
     }
 }
@@ -50,28 +50,6 @@ function setThemeButtonState(theme, btnAnimation) {
     // Sync both buttons (desktop + mobile header)
     toggleSlider.forEach(slider => { slider.checked = isLightTheme; });
     toggleSwitches.forEach(button => { button.checked = isLightTheme; });
-}
-
-function setThemeIcon(theme, btnAnimation) {
-    if (btnAnimation) {
-        setTimeout(function () {
-            changeThemeIcon(theme);
-        }, 75);
-    } else {
-        changeThemeIcon(theme);
-    }
-}
-
-function changeThemeIcon(theme) {
-    for (const icon of toggleIcon) {
-        if (theme === "light") {
-            icon.innerHTML = `<img src="icons/static/header-icon-sun.svg" alt="|">`;
-        } else if (theme === "dark") {
-            icon.innerHTML = `<img src="icons/static/header-icon-dark.svg" alt="|">`;
-        } else {
-            alert("Error! in setThemeIcon()");
-        }
-    }
 }
 
 
