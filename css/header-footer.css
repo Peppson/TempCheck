@@ -70,9 +70,11 @@ footer p {
     width: 130px;
 }
 
-.switch-container img {
-    width: 120%;
-    margin-top: 4px;
+.theme-switch-icon {
+    background-image: var(--header-switch-icon);
+    width: 60px;
+    height: 60px;
+    margin-top: -7px;
 }
 
 .header-icons {
