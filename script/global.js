@@ -106,7 +106,7 @@ toggleSwitches.forEach((toggleSwitch) => {
         // Sync both buttons
         toggleSwitches.forEach(button => button.checked = isLightTheme);
 
-        let theme = isLightTheme ? "light" : "dark"; 
+        let theme = isLightTheme ? "light" : "dark";
         setTheme(theme);
     });
 });
