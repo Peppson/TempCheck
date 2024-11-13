@@ -20,17 +20,7 @@ function colorInputField(field) {
     }
 }
 
-// Color input fields when not empty
-document.getElementById("username").addEventListener("input", function() {
-    colorInputField(this);
-});
-
-document.getElementById("password").addEventListener("input", function() {
-    colorInputField(this);
-});
-
 /* GEOLOCATION */
-
 function getLocation() {
     navigator.geolocation.getCurrentPosition(
         (position) => {
@@ -43,3 +33,16 @@ function getLocation() {
 }
 
 getLocation();
+
+
+
+//------------ Event Listeners ------------//
+
+// Color input fields when not empty
+document.getElementById("username").addEventListener("input", function() {
+    colorInputField(this);
+});
+
+document.getElementById("password").addEventListener("input", function() {
+    colorInputField(this);
+});

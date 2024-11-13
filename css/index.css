@@ -41,7 +41,7 @@ main label {
 .sign-in-page {
     display: flex;
     justify-content: center;
-    height: 85%;
+    height: 100%;
     padding-top: 50px;
 }
 
@@ -110,7 +110,6 @@ main label {
 #forgot-password {
     padding-top: 10px;
     color: var(--lightgrey);
-    cursor: default;
 }
 
 #username-icon {
