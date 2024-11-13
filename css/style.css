@@ -9,7 +9,7 @@
     --accent-color-light: rgb(56, 139, 218);
     --toggle-btn-dark: #2e2e2e;
     --window-background-color: rgba(0, 0, 0, 0.2);
-    --forecast-hover: var(--accent-color-light); 
+    --forecast-hover: var(--accent-color-light);
     
     /* ----- Gradients ----- */
     --forecast-button: linear-gradient(0deg, rgba(255, 255, 255, 0.2) 0%, rgba(0, 0, 0, 0) 100%);
