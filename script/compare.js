@@ -94,13 +94,43 @@ function weatherApiHelper(win){
 }
 
 function search(win){
+
+    const one = `
+    <div class="dropdown">
+        <button class="dropdown-btn" onclick="toggleDropdown('.dropdown .swe')">Select Swedish
+            City</button>
+        <div class="swe">
+            <div onclick="weatherApi('Malmo', 'one')">Malmö</div>
+            <div onclick="weatherApi('Norrkoping', 'one')">Norrköping</div>
+            <div onclick="weatherApi('Stockholm', 'one')">Stockholm</div>
+            <div onclick="weatherApi('kiruna', 'one')">Kirunna</div>
+        </div>
+    </div>
+    `
+
+    const two = `
+    <div class="dropdown">
+        <button class="dropdown-btn" onclick="toggleDropdown('.dropdown .rwa')">Select Rwandan
+            City</button>
+        <div class="rwa">
+            <div onclick="weatherApi('Kigali', 'two')">Kigali</div>
+            <div onclick="weatherApi('Gisenyi', 'two')">Gisenyi</div>
+            <div onclick="weatherApi('Butare', 'two')">Butare</div>
+            <div onclick="weatherApi('Gitarama', 'two')">Gitarama</div>
+        </div>
+    </div>
+    `
+    let final = two;
+
+    if (win === 'one'){
+        final = one;
+    }
+
+
     const onclickSearch = document.getElementsByClassName(`win-${win}`)[0];
 
     onclickSearch.innerHTML = `
-    <div class="input-align">
-        <input class="input-search" type="text" placeholder="Location">
-        <button class="search-style" onclick="weatherApiHelper('${win}')">Search</button>
-    </div>
+    ${final}
     `
 }
 
