@@ -103,7 +103,7 @@ function search(win){
             <div onclick="weatherApi('Malmo', 'one')">Malmö</div>
             <div onclick="weatherApi('Norrkoping', 'one')">Norrköping</div>
             <div onclick="weatherApi('Stockholm', 'one')">Stockholm</div>
-            <div onclick="weatherApi('kiruna', 'one')">Kirunna</div>
+            <div onclick="weatherApi('kiruna', 'one')">Kiruna</div>
         </div>
     </div>
     `
@@ -157,11 +157,11 @@ function displayVs(weatherData, win) {
     setTimeout(function () {
         infoTextCollection.innerHTML = `
         <button class="search-button-${win}" onclick="search('${win}')">
-            <div class="vs-info">
+          
             <div class=city-info>${weatherData.name}, ${weatherData.sys.country}</div>
             <img class="icon-img" src="${iconPath}">
-            </div>
-            <div class="vs-temp-info">${temp}°C</div>
+            
+            <div class="vs-temp-info">${temp}°</div>
         </button>
             `;
     }, 1000);
