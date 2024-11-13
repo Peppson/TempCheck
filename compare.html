@@ -98,11 +98,16 @@
             <div class="compare-weather-container transparent-blurred box-shadow">
                 <div class="vs-container">
                     <div class="win-one">
-                        <button class="search-button-one" onclick="search('one')">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus align-plus" viewBox="0 0 16 16">
-                                <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4"/>
-                            </svg>
-                        </button>
+                        <div class="dropdown">
+                            <button class="dropdown-btn" onclick="toggleDropdown('.dropdown .swe')">Select Swedish
+                                City</button>
+                            <div class="swe">
+                                <div onclick="weatherApi('Malmo', 'one')">Malmö</div>
+                                <div onclick="weatherApi('Norrkoping', 'one')">Norrköping</div>
+                                <div onclick="weatherApi('Stockholm', 'one')">Stockholm</div>
+                                <div onclick="weatherApi('kiruna', 'one')">Kirunna</div>
+                            </div>
+                        </div>
                     </div>
                         <div class="rubric">
                             <div class="temp-vs">
@@ -139,17 +144,22 @@
                             </div>
                         </div>
                     <div class="win-two">
-                        <button class="search-button-two" onclick="search('two')">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus align-plus" viewBox="0 0 16 16">
-                                <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4"/>
-                            </svg>
-                        </button>
+                        <div class="dropdown">
+                            <button class="dropdown-btn" onclick="toggleDropdown('.dropdown .rwa')">Select Rwandan
+                                City</button>
+                            <div class="rwa">
+                                <div onclick="weatherApi('Kigali', 'two')">Kigali</div>
+                                <div onclick="weatherApi('Gisenyi', 'two')">Gisenyi</div>
+                                <div onclick="weatherApi('Butare', 'two')">Butare</div>
+                                <div onclick="weatherApi('Gitarama', 'two')">Gitarama</div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
 
             <div class="city-container">
-                <div class="dropdown">
+                <!--<div class="dropdown">
                     <button class="dropdown-btn" onclick="toggleDropdown('.dropdown:nth-child(1) .swe')">Select Swedish
                         City</button>
                     <div class="swe">
@@ -170,7 +180,7 @@
                     </div>
                 </div>
             </div>
-
+        -->
         </div>
     </main>
 
