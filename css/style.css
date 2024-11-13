@@ -1,7 +1,7 @@
 
 .dark-mode {
     /* ----- Colors ----- */
-    --white: #ffffff;   
+    --white: white;
     --lightgrey: #cecdd4;
     --grey: #68686d;
     --darkgrey: rgb(59, 59, 59);
