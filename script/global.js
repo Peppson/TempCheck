@@ -46,7 +46,6 @@ function setThemeButtonState(theme, btnAnimation) {
             button.classList.add("slider-animation");
         });
     }
-    
     // Sync both buttons (desktop + mobile header)
     toggleSlider.forEach(slider => { slider.checked = isLightTheme; });
     toggleSwitches.forEach(button => { button.checked = isLightTheme; });

@@ -120,6 +120,7 @@ main label {
     background-image: var(--password-icon);
 }
 
+
 /* Sign in animation */
 @keyframes button-loading-spinner {
     from {

@@ -1,28 +1,39 @@
-/* Bottom div */
 
 .vs-container {
     display: flex;
     flex-direction: row;
-
     color: var(--white);
     border-radius: var(--border-radius);
+}
+
+.bottom-section {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100%;
+    padding-top: 30px;
+    padding-bottom: 200px;
+    padding-left: 10px;
+    padding-right: 10px;
 }
 
 .compare-weather-container {
     border-radius: var(--border-radius);
     display: flex;
     flex-direction: column;
-    padding: 40px 50px 40px 50px;
+    padding: 30px 50px 40px 50px;
     width: 100%;
     max-width: 900px;
+    overflow: hidden;
 }
 
 .compare-header {
-    text-align: center;
-    color: var(--lightgrey);
-    padding-bottom: 10px;
-    /* padding-inline: 20px; */
-    font-size: 30px;
+    cursor: default;
+    font-size: 28px;
+    min-height: 100px;
+    color: var(--white);
+    padding-bottom: 20px;
 }
 
 .win-one,
@@ -31,7 +42,6 @@
     width: 300px;
     display: flex;
     justify-content: center;
-
 }
 
 .win-one {
@@ -46,8 +56,6 @@
     background-size: 150px;
     background-position: center;
     background-size: cover;
-
-
 }
 
 .rubric {
@@ -90,14 +98,16 @@
     padding: 16px;
     font-size: 16px;
     border: none;
-    
-    border-radius: var(--border-radius);
     cursor: pointer;
+    transition: transform 0.2s ease;
 }
 
-.dropdown-btn:hover,
+.dropdown-btn:hover {
+    transform: scale(1.05);
+}
+
 .dropdown-btn:focus {
-    background-color: var(--accent-color-light);
+    transform: initial;
 }
 
 .swe,
@@ -122,29 +132,29 @@
 .swe div:hover,
 .rwa div:hover {
     background-color: #f1f1f1;
+    cursor: pointer;
 }
 
 .city-info {
     width: 100%;
     height: 100px;
     font-size: 25px;
-    margin-top: 40px;
     text-align: center;
     color: var(--white);
+    margin-bottom: -50px;
 }
 
 .icon-img {
     width: 200px;
     height: 200px;
-
 }
 
 .vs-temp-info {
     text-align: center;
     font-size: 100px;
     color: var(--white);
+    padding-left: 36px;
 }
-
 
 .search-input {
     width: 100px;
@@ -231,22 +241,20 @@
 }
 
 .move-one {
-    animation: moveLeft 2s forwards ease;
+    animation: moveLeft 1.5s forwards ease;
 }
 
 .move-two {
-    animation: moveRight 2s forwards ease;
+    animation: moveRight 1.5s forwards ease;
 }
 
 @keyframes moveLeft {
     0% {
         transform: translateX(0);
     }
-
     50% {
         transform: translateX(-400px);
     }
-
     100% {
         transform: translateX(0);
     }
@@ -256,27 +264,26 @@
     0% {
         transform: translateX(0);
     }
-
     50% {
         transform: translateX(400px);
     }
-
     100% {
         transform: translateX(0);
     }
 }
 
-@media all and (max-width: 800px) {
-
-    .vs-container{
-
-    }
-    .compare-weather-container{
-        padding:10px;
+@media all and (max-width: 480px) {
+    .compare-weather-container {
+        border-radius: 0px;
+        padding: 0px;
     }
 }
 
-@media all and (max-width: 600px) {
+@media all and (max-width: 680px) {
+    .bottom-section {
+        padding-left: 0px;
+        padding-right: 0px;
+    }
 
     .compare-header {
         flex-direction: column;
@@ -292,21 +299,21 @@
         width: 100%;
     }
 
-    .rubric{
-        gap:10px;
-        padding:10px;
+    .rubric {
+        gap: 10px;
+        padding: 10px;
+        padding-top: 20px;
+        padding-bottom: 20px;
     }
+
     .compare-weather-container {
         max-width: 420px;
         min-height: 200px;
         width: 100%;
         max-width: 800px;
         min-height: 500px;
-        padding:10px;
-        background-color: var(--window-background-color);
+        padding: 10px;
     }
-
-
 
     .input-search,
     .search-style {
@@ -316,7 +323,6 @@
         font-size: 12px;
         padding-top: 0;
     }
-
 
     .temp-vs,
     .feel-vs,

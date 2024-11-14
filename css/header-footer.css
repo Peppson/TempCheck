@@ -115,7 +115,7 @@ footer p {
     justify-content: space-between;
     width: 100%;
     padding: 20px;
-    padding-right: 40px; /* todo */
+    padding-right: 40px;
     z-index: 999;
 }
 

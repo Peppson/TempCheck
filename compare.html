@@ -99,13 +99,12 @@
         <div class="bottom-section">
             <div class="compare-weather-container transparent-blurred box-shadow">
                 <div class="compare-header">
-                    <p>Compare weather</p>
+                    <h2 class="text-center no-select">Weather <span class="text-no-wrap">Face-off</span></h2>
                 </div>
                 <div class="vs-container">
-                    <div class="win-one">
+                    <div class="win-one box-shadow">
                         <div class="dropdown">
-                            <button class="dropdown-btn" onclick="toggleDropdown('.dropdown .swe')">Select Swedish
-                                City</button>
+                            <button class="dropdown-btn box-shadow" onclick="toggleDropdown('.dropdown .swe')">Choose a Swedish City</button>
                             <div class="swe">
                                 <div onclick="weatherApi('Malmo', 'one')">Malmö</div>
                                 <div onclick="weatherApi('Norrkoping', 'one')">Norrköping</div>
@@ -117,7 +116,7 @@
                     <div class="rubric">
                         <div class="temp-vs">
                             <div class="temp-comp-one"></div>
-                            <div>Temperatur</div>
+                            <div>Temp</div>
                             <div class="temp-comp-two"></div>
                         </div>
                         <div class="feel-vs">
@@ -127,13 +126,13 @@
                         </div>
                         <div class="min-vs">
                             <div class="min-comp-one"></div>
-                            <div>Min Temperatur</div>
+                            <div>Min Temp</div>
                             <div class="min-comp-two"></div>
 
                         </div>
                         <div class="max-vs">
                             <div class="max-comp-one"></div>
-                            <div>Max Temperatur</div>
+                            <div>Max Temp</div>
                             <div class="max-comp-two"></div>
                         </div>
                         <div class="hum-vs">
@@ -148,9 +147,9 @@
                             <div class="wind-comp-two"></div>
                         </div>
                     </div>
-                    <div class="win-two">
+                    <div class="win-two box-shadow">
                         <div class="dropdown">
-                            <button class="dropdown-btn" onclick="toggleDropdown('.dropdown .rwa')">Select Rwandan
+                            <button class="dropdown-btn box-shadow" onclick="toggleDropdown('.dropdown .rwa')">Choose a Rwandan
                                 City</button>
                             <div class="rwa">
                                 <div onclick="weatherApi('Kigali', 'two')">Kigali</div>
@@ -162,8 +161,7 @@
                     </div>
                 </div>
             </div>
-
-
+        </div>
     </main>
 
     <footer class="transparent-blurred box-shadow">
@@ -185,7 +183,5 @@
             <p class="text-center no-select">© Temp°Check</p>
         </div>
     </footer>
-
 </body>
-
 </html>

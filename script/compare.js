@@ -1,3 +1,4 @@
+
 function getSVGIcon(iconCode) {
     let iconPath;
     switch (iconCode) {
@@ -164,7 +165,7 @@ function displayVs(weatherData, win) {
             <div class="vs-temp-info">${temp}°</div>
         </button>
             `;
-    }, 1000);
+    }, 750);
     infoTextCollection.addEventListener('animationend', function handleAnimationEnd() {
         infoTextCollection.classList.remove(`move-${win}`);
 
@@ -174,7 +175,5 @@ function displayVs(weatherData, win) {
         maxDiv.innerHTML = maxComp;
         humDiv.innerHTML = humiComp;
         windDiv.innerHTML = windComp;
-
-
     })
 }
