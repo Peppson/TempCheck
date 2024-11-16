@@ -4,9 +4,9 @@ function onUserLogin(event) {
     document.getElementById("button-container").classList.toggle("button-loading");
     document.getElementById("submit-button").value = "";
     
-    // Animation
+    // Goto forecast.html after animation
     setTimeout(function() {
-        document.getElementById("userLogin").submit();
+        window.location.href = "./forecast.html";  /* document.getElementById("userLogin").submit(); */
     }, 2000);
 }
 
