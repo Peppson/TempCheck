@@ -107,9 +107,9 @@
 
                 <div class="toggle-buttons-container">
                     <button id="show-hourly" class="toggle-buttons active-button"
-                        onclick="showHourlyForecast()">Hourly</button>
-                    <button id="show-daily" class="toggle-buttons" onclick="showDailyForecast()">Daily</button>
-                    <button id="show-info" class="toggle-buttons" onclick="showTodaysInfo()">Info</button>
+                        onclick="showForecast('hourly')">Hourly</button>
+                    <button id="show-daily" class="toggle-buttons" onclick="showForecast('daily')">Daily</button>
+                    <button id="show-current" class="toggle-buttons" onclick="showForecast('current')">Info</button>
                 </div>
 
                 <div id="hourly-forecast" class="forecast-section" style="display: flex;"></div>
