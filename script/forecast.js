@@ -186,49 +186,30 @@ function displayDailyForecast(weatherData, today, container) {
     });
 }
 
-/* SHOW/HIDE HOURLY FORECAST */
-function showHourlyForecast() {
-    const hourlyForecastContainer = document.getElementById("hourly-forecast");
-    const dailyForecastContainer = document.getElementById("daily-forecast");
-    const currentInfo = document.getElementById("current-info");
-
-    hourlyForecastContainer.style.display = "flex";
-    dailyForecastContainer.style.display = "none";
-    currentInfo.style.display = "none";
-
-    document.getElementById("show-hourly").classList.add("active-button");
-    document.getElementById("show-daily").classList.remove("active-button");
-    document.getElementById("show-info").classList.remove("active-button");
-}
-
-/* SHOW/HIDE DAILY FORECASTS */
-function showDailyForecast() {
-    const hourlyForecastContainer = document.getElementById("hourly-forecast");
-    const dailyForecastContainer = document.getElementById("daily-forecast");
-    const currentInfo = document.getElementById("current-info");
-
-    hourlyForecastContainer.style.display = "none";
-    dailyForecastContainer.style.display = "flex";
-    currentInfo.style.display = "none";
-
-    document.getElementById("show-daily").classList.add("active-button");
-    document.getElementById("show-hourly").classList.remove("active-button");
-    document.getElementById("show-info").classList.remove("active-button");
-}
-
-/* SHOW THE INFORMATION OF TODAY */
-function showTodaysInfo() {
+/* SHOW/HIDE FORECAST */
+function showForecast(type) {
     const hourlyForecastContainer = document.getElementById("hourly-forecast");
     const dailyForecastContainer = document.getElementById("daily-forecast");
     const currentInfoContainer = document.getElementById("current-info");
 
     hourlyForecastContainer.style.display = "none";
     dailyForecastContainer.style.display = "none";
-    currentInfoContainer.style.display = "flex";
+    currentInfoContainer.style.display = "none";
 
-    document.getElementById("show-daily").classList.remove("active-button");
     document.getElementById("show-hourly").classList.remove("active-button");
-    document.getElementById("show-info").classList.add("active-button");
+    document.getElementById("show-daily").classList.remove("active-button");
+    document.getElementById("show-current").classList.remove("active-button");
+
+    if (type === 'hourly') {
+        hourlyForecastContainer.style.display = "flex";
+        document.getElementById("show-hourly").classList.add("active-button");
+    } else if (type === 'daily') {
+        dailyForecastContainer.style.display = "flex";
+        document.getElementById("show-daily").classList.add("active-button");
+    } else if (type === 'current') {
+        currentInfoContainer.style.display = "flex";
+        document.getElementById("show-current").classList.add("active-button");
+    }
 }
 
 /* MATCHING THE ICON CODES WITH SVGs */
